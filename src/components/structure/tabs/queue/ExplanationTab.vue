@@ -130,13 +130,4 @@ const realWorld = [
     example: 'RabbitMQ, Kafka, SQS'
   },
 ]
-
-const useCases = [
-  { type: 'pro', text: 'Processar tarefas pela ordem de chegada'              },
-  { type: 'pro', text: 'Implementar BFS em grafos e árvores'                  },
-  { type: 'pro', text: 'Buffers de dados entre processos'                     },
-  { type: 'pro', text: 'Sistemas de mensagens e eventos'                      },
-  { type: 'con', text: 'Precisas de aceder a elementos no meio'               },
-  { type: 'con', text: 'Precisas de acesso por índice'                        },
-]
 </script>

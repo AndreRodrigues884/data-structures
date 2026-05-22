@@ -101,13 +101,4 @@ const realWorld = [
     example: 'Compiladores, calculadoras'
   },
 ]
-
-const useCases = [
-  { type: 'pro', text: 'Precisas de acesso apenas ao elemento mais recente'     },
-  { type: 'pro', text: 'Implementar funcionalidade de undo/redo'                },
-  { type: 'pro', text: 'Gerir chamadas de funções recursivas'                   },
-  { type: 'pro', text: 'Validar estruturas balanceadas como parênteses'         },
-  { type: 'con', text: 'Precisas de aceder a elementos no meio ou no fundo'     },
-  { type: 'con', text: 'Precisas de iterar sobre todos os elementos'            },
-]
 </script>

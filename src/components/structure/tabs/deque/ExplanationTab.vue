@@ -106,13 +106,4 @@ const leetcodePatterns = [
         example: 'LC #1368'
     },
 ]
-
-const useCases = [
-    { type: 'pro', text: 'Sliding window problems no LeetCode' },
-    { type: 'pro', text: 'Precisas de Stack e Queue ao mesmo tempo' },
-    { type: 'pro', text: 'Histórico de navegação com forward e back' },
-    { type: 'pro', text: 'Algoritmos de scheduling com prioridade nas pontas' },
-    { type: 'con', text: 'Acesso a elementos no meio — usa Array' },
-    { type: 'con', text: 'Operações simples LIFO ou FIFO — Stack/Queue é mais claro' },
-]
 </script>
