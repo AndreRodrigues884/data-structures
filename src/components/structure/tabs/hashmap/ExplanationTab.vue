@@ -23,7 +23,7 @@
       </p>
       <div class="bg-zinc-900 border border-zinc-800 p-4">
         <pre
-          class="font-mono text-sm text-zinc-300 leading-relaxed"><span class="text-zinc-500">// Hash simples para strings</span>
+          class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"><span class="text-zinc-500">// Hash simples para strings</span>
 <span class="text-violet-400">function</span> <span class="text-emerald-400">hash</span>(key: <span class="text-amber-400">string</span>, size: <span class="text-amber-400">number</span>): <span class="text-amber-400">number</span> {
   <span class="text-violet-400">let</span> hash = <span class="text-emerald-400">0</span>
   <span class="text-violet-400">for</span> (<span class="text-violet-400">const</span> char <span class="text-violet-400">of</span> key) {
@@ -46,7 +46,7 @@
         diferentes produzem o mesmo índice. Existem duas estratégias principais para resolver:
       </p>
       <div class="space-y-px border border-zinc-800">
-        <div v-for="strategy in collisionStrategies" :key="strategy.name" class="grid grid-cols-3 gap-px bg-zinc-800">
+        <div v-for="strategy in collisionStrategies" :key="strategy.name" class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3">
             <p class="font-mono text-sm text-violet-400">{{ strategy.name }}</p>
           </div>
@@ -61,7 +61,7 @@
     <!-- Complexidade -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Complexidade</h2>
-      <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div v-for="op in operations" :key="op.name" class="bg-zinc-900 px-5 py-4">
           <p class="font-mono text-sm text-zinc-100 mb-1">{{ op.name }}</p>
           <div class="flex gap-3 items-baseline">
@@ -86,7 +86,7 @@
         redistribui todos os elementos para manter O(1).
       </p>
       <div class="space-y-px border border-zinc-800">
-        <div v-for="lf in loadFactors" :key="lf.value" class="grid grid-cols-3 gap-px bg-zinc-800">
+        <div v-for="lf in loadFactors" :key="lf.value" class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm" :class="lf.color">{{ lf.value }}</div>
           <div class="bg-zinc-900 px-4 py-3 text-sm text-zinc-400">{{ lf.desc }}</div>
           <div class="bg-zinc-900 px-4 py-3 font-mono text-xs" :class="lf.color">{{ lf.perf }}</div>
@@ -106,7 +106,7 @@
       </p>
 
       <div class="space-y-px border border-zinc-800">
-        <div v-for="pattern in powerPatterns" :key="pattern.question" class="grid grid-cols-3 gap-px bg-zinc-800">
+        <div v-for="pattern in powerPatterns" :key="pattern.question" class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3">
             <p class="text-sm text-zinc-400 italic">"{{ pattern.question }}"</p>
           </div>
@@ -119,7 +119,7 @@
         </div>
       </div>
 
-      <div class="mt-4 grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div class="bg-zinc-900 px-4 py-3">
           <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-2">sem HashMap</p>
           <p class="font-mono text-sm text-red-400">O(n²) — dois loops</p>

@@ -18,7 +18,7 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-3">A propriedade BST</h2>
       <div class="bg-zinc-900 border border-zinc-800 p-4 mb-4">
-        <pre class="font-mono text-sm text-zinc-300 leading-relaxed">         <span class="text-amber-400">8</span>
+        <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto">         <span class="text-amber-400">8</span>
         / \
       <span class="text-violet-400">3</span>     <span class="text-emerald-400">10</span>
      / \      \
@@ -35,7 +35,7 @@
     <!-- Complexidade -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Complexidade</h2>
-      <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div v-for="op in operations" :key="op.name" class="bg-zinc-900 px-5 py-4">
           <p class="font-mono text-sm text-zinc-100 mb-1">{{ op.name }}</p>
           <div class="flex gap-3 items-baseline">
@@ -52,7 +52,7 @@
     <!-- BST vs Array vs HashMap -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">BST vs Array vs HashMap</h2>
-      <div class="grid grid-cols-4 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800 border border-zinc-800">
         <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600"></div>
         <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600 uppercase tracking-widest">Array</div>
         <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600 uppercase tracking-widest">HashMap</div>
@@ -76,10 +76,10 @@
         <span class="text-violet-400">Red-Black Tree</span> resolvem isto garantindo
         sempre O(log n).
       </p>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div class="bg-zinc-900 border border-zinc-800 p-4">
           <p class="font-mono text-xs text-emerald-400 uppercase tracking-widest mb-3">balanceada ✓</p>
-          <pre class="font-mono text-xs text-zinc-300">    <span class="text-emerald-400">4</span>
+          <pre class="font-mono text-xs text-zinc-300 overflow-x-auto">    <span class="text-emerald-400">4</span>
    / \
   <span class="text-zinc-300">2</span>   <span class="text-zinc-300">6</span>
  / \ / \
@@ -89,7 +89,7 @@ height = 2 → O(log n)</pre>
         </div>
         <div class="bg-zinc-900 border border-zinc-800 p-4">
           <p class="font-mono text-xs text-red-400 uppercase tracking-widest mb-3">desbalanceada ✗</p>
-          <pre class="font-mono text-xs text-zinc-300"><span class="text-red-400">1</span>
+          <pre class="font-mono text-xs text-zinc-300 overflow-x-auto"><span class="text-red-400">1</span>
  \
   <span class="text-zinc-300">2</span>
    \

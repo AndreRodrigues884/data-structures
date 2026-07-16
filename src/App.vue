@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-zinc-950 text-zinc-100">
     <AppSidebar />
-    <main class="ml-60 min-h-screen">
+    <main class="lg:ml-60 min-h-screen pt-14 lg:pt-0">
       <RouterView />
     </main>
   </div>

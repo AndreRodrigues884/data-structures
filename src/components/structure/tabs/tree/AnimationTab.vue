@@ -26,14 +26,14 @@
         </div>
 
         <!-- Controls -->
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
             <!-- Insert -->
             <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
                 <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Inserir nó</p>
                 <div class="flex gap-2">
                     <input v-model="insertValue" type="number" placeholder="valor"
-                        class="flex-1 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+                        class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
                         @keyup.enter="insert" />
                     <button @click="insert" :disabled="isAnimating"
                         class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
@@ -58,7 +58,7 @@
                 <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Pesquisar</p>
                 <div class="flex gap-2">
                     <input v-model="searchValue" type="number" placeholder="valor"
-                        class="flex-1 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+                        class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
                         @keyup.enter="search" />
                     <button @click="search" :disabled="isAnimating"
                         class="px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>

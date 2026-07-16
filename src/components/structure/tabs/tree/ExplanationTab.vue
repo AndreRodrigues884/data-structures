@@ -18,7 +18,7 @@
         <section>
             <h2 class="text-xl font-bold tracking-tight mb-4">Terminologia</h2>
             <div class="space-y-px border border-zinc-800">
-                <div v-for="term in terminology" :key="term.name" class="grid grid-cols-3 gap-px bg-zinc-800">
+                <div v-for="term in terminology" :key="term.name" class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
                     <div class="bg-zinc-900 px-4 py-3">
                         <p class="font-mono text-sm text-violet-400">{{ term.name }}</p>
                     </div>
@@ -32,7 +32,7 @@
         <!-- Tipos -->
         <section>
             <h2 class="text-xl font-bold tracking-tight mb-4">Tipos de Tree</h2>
-            <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
                 <div v-for="type in types" :key="type.name" class="bg-zinc-900 p-4">
                     <p class="font-mono text-sm text-violet-400 mb-1">{{ type.name }}</p>
                     <p class="text-sm text-zinc-400">{{ type.desc }}</p>
@@ -49,7 +49,7 @@
                 muda completamente o resultado.
             </p>
             <div class="space-y-px border border-zinc-800">
-                <div v-for="traversal in traversals" :key="traversal.name" class="grid grid-cols-4 gap-px bg-zinc-800">
+                <div v-for="traversal in traversals" :key="traversal.name" class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800">
                     <div class="bg-zinc-900 px-4 py-3">
                         <p class="font-mono text-sm text-violet-400">{{ traversal.name }}</p>
                     </div>
@@ -66,7 +66,7 @@
         <!-- Complexidade -->
         <section>
             <h2 class="text-xl font-bold tracking-tight mb-4">Complexidade</h2>
-            <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
                 <div v-for="op in operations" :key="op.name" class="bg-zinc-900 px-5 py-4">
                     <p class="font-mono text-sm text-zinc-100 mb-1">{{ op.name }}</p>
                     <p class="font-mono text-lg" :class="op.color">{{ op.complexity }}</p>
@@ -78,7 +78,7 @@
         <!-- No mundo real -->
         <section>
             <h2 class="text-xl font-bold tracking-tight mb-4">No mundo real</h2>
-            <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
                 <div v-for="use in realWorld" :key="use.title" class="bg-zinc-900 p-4">
                     <p class="font-mono text-sm text-violet-400 mb-1">{{ use.title }}</p>
                     <p class="text-sm text-zinc-400">{{ use.desc }}</p>

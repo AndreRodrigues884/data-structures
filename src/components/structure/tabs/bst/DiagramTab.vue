@@ -39,7 +39,7 @@
         <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-3">
           nó selecionado: {{ selectedNode.value }}
         </p>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <p class="font-mono text-xs text-violet-400 mb-1">← esquerda (menores)</p>
             <p class="font-mono text-sm text-zinc-300">{{ getLeftValues(selectedNode) }}</p>

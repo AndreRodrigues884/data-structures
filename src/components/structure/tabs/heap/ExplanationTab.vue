@@ -19,13 +19,13 @@
     <!-- Max vs Min -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Max Heap vs Min Heap</h2>
-      <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div class="bg-zinc-900 p-5">
           <p class="font-mono text-sm text-violet-400 mb-3">Max Heap</p>
           <p class="text-sm text-zinc-400 mb-3">Pai ≥ filhos. A raiz é sempre o <span
               class="text-violet-400">máximo</span>.</p>
           <pre
-            class="font-mono text-xs text-zinc-300">       <span class="text-violet-400">100</span>
+            class="font-mono text-xs text-zinc-300 overflow-x-auto">       <span class="text-violet-400">100</span>
       /     \
     <span class="text-zinc-300">19</span>       <span class="text-zinc-300">36</span>
    /  \    /  \
@@ -36,7 +36,7 @@
           <p class="text-sm text-zinc-400 mb-3">Pai ≤ filhos. A raiz é sempre o <span
               class="text-emerald-400">mínimo</span>.</p>
           <pre
-            class="font-mono text-xs text-zinc-300">        <span class="text-emerald-400">1</span>
+            class="font-mono text-xs text-zinc-300 overflow-x-auto">        <span class="text-emerald-400">1</span>
       /     \
     <span class="text-zinc-300">3</span>        <span class="text-zinc-300">6</span>
    /  \    /  \
@@ -53,7 +53,7 @@
         precisas de ponteiros. Para um nó no índice <code class="text-emerald-400 font-mono">i</code>:
       </p>
       <div class="space-y-px border border-zinc-800 mb-4">
-        <div v-for="formula in formulas" :key="formula.name" class="grid grid-cols-2 gap-px bg-zinc-800">
+        <div v-for="formula in formulas" :key="formula.name" class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-zinc-400">{{ formula.name }}</div>
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-violet-400">{{ formula.formula }}</div>
         </div>
@@ -76,7 +76,7 @@
     <!-- Complexidade -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Complexidade</h2>
-      <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div v-for="op in operations" :key="op.name" class="bg-zinc-900 px-5 py-4">
           <p class="font-mono text-sm text-zinc-100 mb-1">{{ op.name }}</p>
           <p class="font-mono text-lg" :class="op.color">{{ op.complexity }}</p>
@@ -93,7 +93,7 @@
         O <span class="text-violet-400">heapify</span> restaura a propriedade
         trocando nós até tudo estar correto.
       </p>
-      <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div class="bg-zinc-900 p-4">
           <p class="font-mono text-xs text-violet-400 uppercase tracking-widest mb-2">bubble up</p>
           <p class="text-sm text-zinc-400">Após inserção — o novo nó sobe até encontrar o seu lugar.</p>

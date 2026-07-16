@@ -18,7 +18,7 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Tipos de Linked List</h2>
       <div class="space-y-px border border-zinc-800">
-        <div v-for="type in types" :key="type.name" class="grid grid-cols-3 gap-px bg-zinc-800">
+        <div v-for="type in types" :key="type.name" class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3">
             <p class="font-mono text-sm text-zinc-100">{{ type.name }}</p>
           </div>
@@ -33,7 +33,7 @@
     <!-- Complexidade -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Complexidade</h2>
-      <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div v-for="op in operations" :key="op.name" class="bg-zinc-900 px-5 py-4">
           <p class="font-mono text-sm text-zinc-100 mb-1">{{ op.name }}</p>
           <p class="font-mono text-lg" :class="op.color">{{ op.complexity }}</p>
@@ -45,7 +45,7 @@
     <!-- Array vs Linked List -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Array vs Linked List</h2>
-      <div class="grid grid-cols-3 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800 border border-zinc-800">
         <div class="bg-zinc-950 px-4 py-3 font-mono text-xs text-zinc-600 uppercase tracking-widest">Operação</div>
         <div class="bg-zinc-950 px-4 py-3 font-mono text-xs text-zinc-600 uppercase tracking-widest">Array</div>
         <div class="bg-zinc-950 px-4 py-3 font-mono text-xs text-zinc-600 uppercase tracking-widest">Linked List</div>
@@ -67,13 +67,13 @@
         O último nó aponta para <code class="text-red-400 font-mono">null</code>.
       </p>
       <div class="space-y-px border border-zinc-800">
-        <div class="grid grid-cols-4 gap-px bg-zinc-800">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800">
           <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">nó</div>
           <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">endereço</div>
           <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">valor</div>
           <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">next →</div>
         </div>
-        <div v-for="node in memoryView" :key="node.addr" class="grid grid-cols-4 gap-px bg-zinc-800">
+        <div v-for="node in memoryView" :key="node.addr" class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-zinc-500">{{ node.name }}</div>
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-violet-400">{{ node.addr }}</div>
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-zinc-100">{{ node.value }}</div>

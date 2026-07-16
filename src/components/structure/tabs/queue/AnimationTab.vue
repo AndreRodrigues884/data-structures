@@ -64,14 +64,14 @@
         </div>
 
         <!-- Controls -->
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
             <!-- Enqueue -->
             <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
                 <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Enqueue — O(1)</p>
                 <div class="flex gap-2">
                     <input v-model="enqueueValue" type="number" placeholder="valor"
-                        class="flex-1 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+                        class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
                         @keyup.enter="enqueue" />
                     <button @click="enqueue" :disabled="isAnimating"
                         class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>

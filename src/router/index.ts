@@ -14,11 +14,11 @@ const router = createRouter({
     { path: '/tree', name: 'tree', component: () => import('@/views/structures/TreeView.vue') },
     { path: '/heap', name: 'heap', component: () => import('@/views/structures/HeapView.vue') },
     { path: '/bst', name: 'bst', component: () => import('@/views/structures/BSTView.vue') },
-    /* { path: '/graph',        name: 'graph',         component: () => import('@/views/structures/GraphView.vue')       },
-     { path: '/bloom-filter', name: 'bloom-filter',  component: () => import('@/views/structures/BloomFilterView.vue') },
-     { path: '/disjoint-set', name: 'disjoint-set',  component: () => import('@/views/structures/DisjointSetView.vue') },
-     { path: '/trie',         name: 'trie',          component: () => import('@/views/structures/TrieView.vue')        },
-     { path: '/lru-cache',    name: 'lru-cache',     component: () => import('@/views/structures/LRUCacheView.vue')  },*/
+    { path: '/graph', name: 'graph', component: () => import('@/views/structures/GraphView.vue') },
+    { path: '/bloom-filter', name: 'bloom-filter', component: () => import('@/views/structures/BloomFilterView.vue') },
+    { path: '/disjoint-set', name: 'disjoint-set', component: () => import('@/views/structures/DisjointSetView.vue') },
+    { path: '/trie', name: 'trie', component: () => import('@/views/structures/TrieView.vue') },
+    { path: '/lru-cache', name: 'lru-cache', component: () => import('@/views/structures/LRUCacheView.vue') },
   ]
 })
 

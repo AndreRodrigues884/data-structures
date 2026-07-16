@@ -73,7 +73,7 @@
         <!-- 4 operações -->
         <section>
             <h2 class="text-xl font-bold tracking-tight mb-4">As 4 operações</h2>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div v-for="op in ops" :key="op.name" class="bg-zinc-900 border border-zinc-800 p-4">
                     <div class="flex items-center gap-2 mb-2">
                         <span class="font-mono text-sm" :class="op.color">{{ op.name }}</span>
@@ -118,7 +118,7 @@
                 para encontrar o máximo de uma janela deslizante em O(n).
             </p>
             <div class="bg-zinc-900 border border-zinc-800 p-4">
-                <pre class="font-mono text-sm text-zinc-300 leading-relaxed"><span class="text-zinc-500">// Máximo de cada janela de tamanho k</span>
+                <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"><span class="text-zinc-500">// Máximo de cada janela de tamanho k</span>
 <span class="text-violet-400">function</span> <span class="text-emerald-400">slidingWindowMax</span>(nums, k) {
   <span class="text-violet-400">const</span> deque = []  <span class="text-zinc-500">// guarda índices</span>
   <span class="text-violet-400">const</span> result = []

@@ -60,7 +60,7 @@
     <!-- Enqueue vs Dequeue -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Enqueue vs Dequeue</h2>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
         <!-- Enqueue -->
         <div class="bg-zinc-900 border border-zinc-800 p-5">
@@ -118,7 +118,7 @@
     <!-- Passos do enqueue/dequeue -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Como funciona internamente</h2>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
         <div class="space-y-2">
           <p class="font-mono text-xs text-emerald-400 uppercase tracking-widest mb-3">enqueue(x)</p>

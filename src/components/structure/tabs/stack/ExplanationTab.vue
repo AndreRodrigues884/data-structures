@@ -17,7 +17,7 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Operações principais</h2>
       <div class="space-y-px border border-zinc-800">
-        <div v-for="op in operations" :key="op.name" class="grid grid-cols-4 gap-px bg-zinc-800">
+        <div v-for="op in operations" :key="op.name" class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3">
             <p class="font-mono text-sm text-violet-400">{{ op.name }}</p>
           </div>
@@ -34,7 +34,7 @@
     <!-- Casos de uso reais -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Onde é usada no mundo real</h2>
-      <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
         <div v-for="use in realWorld" :key="use.title" class="bg-zinc-900 p-4">
           <p class="font-mono text-sm text-violet-400 mb-1">{{ use.title }}</p>
           <p class="text-sm text-zinc-400">{{ use.desc }}</p>
@@ -53,7 +53,7 @@
         o frame é removido do topo — <span class="text-emerald-400">LIFO</span>.
       </p>
       <div class="bg-zinc-900 border border-zinc-800 p-4">
-        <pre class="font-mono text-sm text-zinc-300 leading-relaxed"><span class="text-zinc-500">// Este código...</span>
+        <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"><span class="text-zinc-500">// Este código...</span>
 <span class="text-violet-400">function</span> <span class="text-emerald-400">c</span>() { <span class="text-violet-400">return</span> <span class="text-emerald-400">1</span> }
 <span class="text-violet-400">function</span> <span class="text-emerald-400">b</span>() { <span class="text-violet-400">return</span> <span class="text-emerald-400">c</span>() }
 <span class="text-violet-400">function</span> <span class="text-emerald-400">a</span>() { <span class="text-violet-400">return</span> <span class="text-emerald-400">b</span>() }

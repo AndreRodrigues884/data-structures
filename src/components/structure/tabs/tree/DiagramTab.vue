@@ -56,7 +56,7 @@
 
             <!-- Node info -->
             <div v-if="selectedNode" class="bg-zinc-900 border border-violet-500/30 p-4 mt-2">
-                <div class="grid grid-cols-3 gap-4 font-mono text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-sm">
                     <div>
                         <p class="text-zinc-600 text-xs mb-1">valor</p>
                         <p class="text-violet-400">{{ selectedNode.value }}</p>

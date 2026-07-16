@@ -15,7 +15,7 @@
         <!-- Complexidade -->
         <section>
             <h2 class="text-xl font-bold tracking-tight mb-4">Complexidade</h2>
-            <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
                 <div v-for="op in operations" :key="op.name" class="bg-zinc-900 px-5 py-4">
                     <p class="font-mono text-sm text-zinc-100 mb-1">{{ op.name }}</p>
                     <p class="font-mono text-lg" :class="op.color">{{ op.complexity }}</p>
@@ -97,14 +97,14 @@
 
             <!-- Representação binária -->
             <div class="space-y-px border border-zinc-800 mb-6">
-                <div v-for="(item, i) in binaryView" :key="i" class="grid grid-cols-4 gap-px bg-zinc-800">
+                <div v-for="(item, i) in binaryView" :key="i" class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800">
                     <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-zinc-500">arr[{{ i }}]</div>
                     <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-violet-400">{{ item.decimal }}</div>
                     <div class="bg-zinc-900 px-4 py-3 font-mono text-xs text-emerald-400 tracking-wider">{{ item.binary
                     }}</div>
                     <div class="bg-zinc-900 px-4 py-3 font-mono text-xs text-zinc-600">{{ item.hex }}</div>
                 </div>
-                <div class="grid grid-cols-4 gap-px bg-zinc-800">
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800">
                     <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">índice</div>
                     <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">decimal</div>
                     <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">binário (32 bits)</div>
@@ -148,18 +148,18 @@
 
             <!-- Spatial vs random -->
             <h3 class="text-lg font-bold tracking-tight mb-3">Acesso sequencial vs aleatório</h3>
-            <div class="grid grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
                 <div class="bg-zinc-900 p-5">
                     <p class="font-mono text-xs text-emerald-400 uppercase tracking-widest mb-3">✓ Sequencial — rápido
                     </p>
-                    <pre class="font-mono text-sm text-zinc-300 leading-relaxed">for (let i = 0; i &lt; n; i++) {
+                    <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto">for (let i = 0; i &lt; n; i++) {
   sum += arr[i]  // cache hit
 }</pre>
                     <p class="text-xs text-zinc-600 mt-3">CPU prevê o próximo acesso. Cache hit ~1ns.</p>
                 </div>
                 <div class="bg-zinc-900 p-5">
                     <p class="font-mono text-xs text-amber-400 uppercase tracking-widest mb-3">⚠ Aleatório — lento</p>
-                    <pre class="font-mono text-sm text-zinc-300 leading-relaxed">for (let i = 0; i &lt; n; i++) {
+                    <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto">for (let i = 0; i &lt; n; i++) {
   sum += arr[rand()] // cache miss
 }</pre>
                     <p class="text-xs text-zinc-600 mt-3">Cache miss pode custar ~100ns. 100x mais lento.</p>

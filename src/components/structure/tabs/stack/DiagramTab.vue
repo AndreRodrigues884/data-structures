@@ -48,7 +48,7 @@
     <!-- Push vs Pop -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Push vs Pop</h2>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
         <!-- Push -->
         <div class="bg-zinc-900 border border-zinc-800 p-5">
@@ -120,12 +120,12 @@
         Um dos algoritmos clássicos com Stack — verifica se os parênteses de uma expressão estão balanceados.
       </p>
       <div class="space-y-px border border-zinc-800">
-        <div class="grid grid-cols-3 gap-px bg-zinc-800">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
           <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">expressão</div>
           <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">stack final</div>
           <div class="bg-zinc-950 px-4 py-2 font-mono text-xs text-zinc-600">resultado</div>
         </div>
-        <div v-for="ex in parenExamples" :key="ex.expr" class="grid grid-cols-3 gap-px bg-zinc-800">
+        <div v-for="ex in parenExamples" :key="ex.expr" class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-zinc-300">{{ ex.expr }}</div>
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm text-zinc-500">{{ ex.stack }}</div>
           <div class="bg-zinc-900 px-4 py-3 font-mono text-sm" :class="ex.valid ? 'text-emerald-400' : 'text-red-400'">

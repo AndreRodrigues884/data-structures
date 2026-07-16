@@ -9,7 +9,7 @@
         A raiz é sempre o <span class="text-violet-400">máximo</span>.
       </p>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <!-- Tree view -->
         <div class="bg-zinc-900 border border-zinc-800 p-4">
           <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-4">tree view</p>
@@ -75,7 +75,7 @@
         </button>
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <svg viewBox="0 0 300 220" class="w-full bg-zinc-900 border border-zinc-800 p-2"
           xmlns="http://www.w3.org/2000/svg">
           <line x1="150" y1="35" x2="80" y2="95" stroke="#3f3f5a" stroke-width="1.5" />
@@ -126,7 +126,7 @@
       </p>
 
       <div class="space-y-px border border-zinc-800">
-        <div v-for="(step, i) in bubbleDownSteps" :key="i" class="grid grid-cols-4 gap-px bg-zinc-800">
+        <div v-for="(step, i) in bubbleDownSteps" :key="i" class="grid grid-cols-1 sm:grid-cols-4 gap-px bg-zinc-800">
           <div class="bg-zinc-900 px-4 py-3 font-mono text-xs text-zinc-600">passo {{ i + 1 }}</div>
           <div class="bg-zinc-900 px-4 py-3 col-span-2 text-sm text-zinc-400">{{ step.desc }}</div>
           <div class="bg-zinc-900 px-4 py-3 font-mono text-xs text-violet-400">{{ step.array }}</div>

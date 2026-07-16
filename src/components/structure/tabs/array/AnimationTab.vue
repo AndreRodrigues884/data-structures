@@ -28,14 +28,14 @@
         </div>
 
         <!-- Controls -->
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
             <!-- Push -->
             <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
                 <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Push — O(1)</p>
                 <div class="flex gap-2">
                     <input v-model="inputValue" type="number" placeholder="valor"
-                        class="flex-1 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+                        class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
                         @keyup.enter="push" />
                     <button @click="push" :disabled="isAnimating"
                         class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors">
@@ -49,7 +49,7 @@
                 <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Insert — O(n)</p>
                 <div class="flex gap-2">
                     <input v-model="insertValue" type="number" placeholder="valor"
-                        class="flex-1 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400" />
+                        class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400" />
                     <input v-model="insertIndex" type="number" placeholder="idx"
                         class="w-16 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400" />
                     <button @click="insertAt" :disabled="isAnimating"
@@ -64,7 +64,7 @@
                 <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Search — O(n)</p>
                 <div class="flex gap-2">
                     <input v-model="searchValue" type="number" placeholder="valor"
-                        class="flex-1 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+                        class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
                         @keyup.enter="search" />
                     <button @click="search" :disabled="isAnimating"
                         class="px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
@@ -78,7 +78,7 @@
                 <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Remove index — O(n)</p>
                 <div class="flex gap-2">
                     <input v-model="removeIndex" type="number" placeholder="índice"
-                        class="flex-1 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+                        class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
                         @keyup.enter="removeAt" />
                     <button @click="removeAt" :disabled="isAnimating"
                         class="px-4 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
