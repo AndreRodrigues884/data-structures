@@ -2,7 +2,7 @@
 
 An interactive platform to **see, understand and play with** 14 fundamental data structures. Each one comes with an explanation, a diagram, a step-by-step animation you can drive yourself, and a reference implementation.
 
-**🔗 Live demo:** <!-- TODO: replace with the Vercel URL --> https://YOUR-PROJECT.vercel.app
+**🔗 Live demo:** <!-- TODO: replace with the Vercel URL --> https://data-structures-tau.vercel.app/
 
 <!-- TODO: add a short GIF of an animation (e.g. heap push/pop) at docs/preview.gif -->
 <!-- ![Preview](docs/preview.gif) -->
@@ -37,7 +37,7 @@ Every structure has four views:
 - [Tailwind CSS 4](https://tailwindcss.com/) for styling
 - [Vue Router](https://router.vuejs.org/) with lazy-loaded routes, one chunk per structure
 - Animations built with plain SVG and reactive state — no animation libraries
-- Deployed on [Vercel](https://data-structures-tau.vercel.app/)
+- Deployed on [Vercel](https://vercel.com/)
 
 ## Getting started
 
