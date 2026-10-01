@@ -19,7 +19,7 @@
       </p>
 
       <!-- Tree visualization -->
-      <svg viewBox="0 0 500 200" class="w-full mb-4" xmlns="http://www.w3.org/2000/svg">
+      <svg :viewBox="`0 0 ${svgWidth} ${svgHeight}`" class="w-full mb-4" xmlns="http://www.w3.org/2000/svg">
         <!-- Edges -->
         <template v-for="edge in treeEdges" :key="`${edge.from}-${edge.to}`">
           <line :x1="getPos(edge.from).x" :y1="getPos(edge.from).y" :x2="getPos(edge.to).x" :y2="getPos(edge.to).y"
@@ -36,9 +36,9 @@
       </svg>
 
       <!-- Array view -->
-      <div class="flex gap-px mb-3">
+      <div class="flex gap-px mb-3 overflow-x-auto">
         <div v-for="(val, i) in heap" :key="i"
-          class="flex-1 flex flex-col items-center border py-2 transition-all duration-300" :class="getArrayClass(i)">
+          class="flex-1 min-w-8 flex flex-col items-center border py-2 transition-all duration-300" :class="getArrayClass(i)">
           <span class="font-mono text-sm">{{ val }}</span>
           <span class="font-mono text-xs text-zinc-600 mt-1">{{ i }}</span>
         </div>
@@ -142,17 +142,24 @@ const highlighted = ref<number[]>([])
 const swapping = ref<number[]>([])
 const removed = ref<number | null>(null)
 
-// Tree positions for up to 15 nodes
-const positions = [
-  { x: 250, y: 25 },
-  { x: 140, y: 85 }, { x: 360, y: 85 },
-  { x: 80, y: 155 }, { x: 200, y: 155 }, { x: 310, y: 155 }, { x: 430, y: 155 },
-  { x: 50, y: 190 }, { x: 110, y: 190 }, { x: 170, y: 190 }, { x: 230, y: 190 },
-  { x: 280, y: 190 }, { x: 340, y: 190 }, { x: 400, y: 190 }, { x: 460, y: 190 },
-]
+// Tree layout computed from the array index — capped at 5 levels to stay legible
+const MAX_SIZE = 31
+const NODE_SPACING = 46
+const LEVEL_HEIGHT = 60
+const PADDING = 25
+
+const depth = computed(() => heap.value.length > 0 ? Math.floor(Math.log2(heap.value.length)) : 0)
+const svgWidth = computed(() => Math.max(500, 2 ** depth.value * NODE_SPACING))
+const svgHeight = computed(() => depth.value * LEVEL_HEIGHT + 2 * PADDING)
 
 function getPos(i: number) {
-  return positions[i] ?? { x: 250, y: 190 }
+  const level = Math.floor(Math.log2(i + 1))
+  const slots = 2 ** level
+  const posInLevel = i + 1 - slots
+  return {
+    x: (posInLevel + 0.5) * (svgWidth.value / slots),
+    y: PADDING + level * LEVEL_HEIGHT,
+  }
 }
 
 const treeEdges = computed(() => {
@@ -249,6 +256,11 @@ async function bubbleDown(arr: number[], idx: number) {
 
 async function push() {
   if (pushValue.value === null || isAnimating.value) return
+  if (heap.value.length >= MAX_SIZE) {
+    message.value = `limite de ${MAX_SIZE} elementos atingido — faz pop() ou reset`
+    messageColor.value = 'text-red-400'
+    return
+  }
   isAnimating.value = true
   clearHighlights()
   sortResult.value = []
