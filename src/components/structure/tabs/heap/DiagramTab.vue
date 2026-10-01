@@ -1,12 +1,10 @@
 <template>
   <div class="max-w-3xl space-y-10">
-
     <!-- Max Heap visual -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-2">Max Heap — visualização</h2>
       <p class="text-zinc-500 text-sm mb-6">
-        Cada pai é sempre maior que os seus filhos.
-        A raiz é sempre o <span class="text-violet-400">máximo</span>.
+        Cada pai é sempre maior que os seus filhos. A raiz é sempre o <span class="text-violet-400">máximo</span>.
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -24,11 +22,24 @@
 
             <!-- Nodes -->
             <g v-for="node in treeNodes" :key="node.id">
-              <circle :cx="node.x" :cy="node.y" r="20" :fill="node.isRoot ? '#1e1b4b' : '#18181f'"
-                :stroke="node.isRoot ? '#7c6dfa' : '#3f3f5a'" stroke-width="1.5" />
-              <text :x="node.x" :y="node.y" text-anchor="middle" dominant-baseline="middle"
-                :fill="node.isRoot ? '#a78bfa' : '#e8e8f0'" font-family="JetBrains Mono, monospace" font-size="13"
-                font-weight="500">
+              <circle
+                :cx="node.x"
+                :cy="node.y"
+                r="20"
+                :fill="node.isRoot ? '#1e1b4b' : '#18181f'"
+                :stroke="node.isRoot ? '#7c6dfa' : '#3f3f5a'"
+                stroke-width="1.5"
+              />
+              <text
+                :x="node.x"
+                :y="node.y"
+                text-anchor="middle"
+                dominant-baseline="middle"
+                :fill="node.isRoot ? '#a78bfa' : '#e8e8f0'"
+                font-family="JetBrains Mono, monospace"
+                font-size="13"
+                font-weight="500"
+              >
                 {{ node.value }}
               </text>
             </g>
@@ -44,9 +55,14 @@
           <div class="space-y-2">
             <div v-for="(val, i) in heapArray" :key="i" class="flex items-center gap-3">
               <span class="font-mono text-xs text-zinc-600 w-4">{{ i }}</span>
-              <div class="flex-1 h-10 flex items-center px-3 border font-mono text-sm" :class="i === 0
-                ? 'border-violet-500/50 bg-violet-500/10 text-violet-300'
-                : 'border-zinc-700 bg-zinc-800 text-zinc-100'">
+              <div
+                class="flex-1 h-10 flex items-center px-3 border font-mono text-sm"
+                :class="
+                  i === 0
+                    ? 'border-violet-500/50 bg-violet-500/10 text-violet-300'
+                    : 'border-zinc-700 bg-zinc-800 text-zinc-100'
+                "
+              >
                 {{ val }}
               </div>
               <span class="font-mono text-xs text-zinc-600">
@@ -62,22 +78,31 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-2">Bubble Up — inserção</h2>
       <p class="text-zinc-500 text-sm mb-4">
-        Ao inserir <span class="text-violet-400">50</span> num Max Heap,
-        o novo nó sobe enquanto for maior que o pai.
+        Ao inserir <span class="text-violet-400">50</span> num Max Heap, o novo nó sobe enquanto for maior que o pai.
       </p>
 
       <div class="flex gap-2 mb-4">
-        <button v-for="(step, i) in bubbleUpSteps" :key="i" @click="activeBubbleUp = i"
-          class="font-mono text-xs px-3 py-1.5 border transition-colors" :class="activeBubbleUp === i
-            ? 'border-violet-400 text-violet-400 bg-violet-400/10'
-            : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'">
+        <button
+          v-for="(step, i) in bubbleUpSteps"
+          :key="i"
+          @click="activeBubbleUp = i"
+          class="font-mono text-xs px-3 py-1.5 border transition-colors"
+          :class="
+            activeBubbleUp === i
+              ? 'border-violet-400 text-violet-400 bg-violet-400/10'
+              : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'
+          "
+        >
           passo {{ i + 1 }}
         </button>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <svg viewBox="0 0 300 220" class="w-full bg-zinc-900 border border-zinc-800 p-2"
-          xmlns="http://www.w3.org/2000/svg">
+        <svg
+          viewBox="0 0 300 220"
+          class="w-full bg-zinc-900 border border-zinc-800 p-2"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <line x1="150" y1="35" x2="80" y2="95" stroke="#3f3f5a" stroke-width="1.5" />
           <line x1="150" y1="35" x2="220" y2="95" stroke="#3f3f5a" stroke-width="1.5" />
           <line x1="80" y1="115" x2="45" y2="175" stroke="#3f3f5a" stroke-width="1.5" />
@@ -86,13 +111,24 @@
           <line x1="220" y1="115" x2="255" y2="175" stroke="#3f3f5a" stroke-width="1.5" />
 
           <g v-for="node in currentBubbleStep.nodes" :key="node.id">
-            <circle :cx="node.x" :cy="node.y" r="20"
+            <circle
+              :cx="node.x"
+              :cy="node.y"
+              r="20"
               :fill="node.highlight === 'new' ? '#0d2b1e' : node.highlight === 'swap' ? '#1e1b4b' : '#18181f'"
               :stroke="node.highlight === 'new' ? '#3de0c0' : node.highlight === 'swap' ? '#7c6dfa' : '#3f3f5a'"
-              stroke-width="1.5" />
-            <text :x="node.x" :y="node.y" text-anchor="middle" dominant-baseline="middle"
+              stroke-width="1.5"
+            />
+            <text
+              :x="node.x"
+              :y="node.y"
+              text-anchor="middle"
+              dominant-baseline="middle"
               :fill="node.highlight === 'new' ? '#3de0c0' : node.highlight === 'swap' ? '#a78bfa' : '#e8e8f0'"
-              font-family="JetBrains Mono, monospace" font-size="13" font-weight="500">
+              font-family="JetBrains Mono, monospace"
+              font-size="13"
+              font-weight="500"
+            >
               {{ node.value }}
             </text>
           </g>
@@ -102,12 +138,20 @@
           <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-2">estado</p>
           <p class="text-sm text-zinc-300 mb-3">{{ currentBubbleStep.desc }}</p>
           <div class="flex gap-px">
-            <div v-for="(val, i) in currentBubbleStep.array" :key="i"
-              class="flex-1 flex flex-col items-center border py-2" :class="currentBubbleStep.highlight.includes(i)
-                ? 'border-violet-500/50 bg-violet-500/10'
-                : 'border-zinc-700 bg-zinc-800'">
-              <span class="font-mono text-xs"
-                :class="currentBubbleStep.highlight.includes(i) ? 'text-violet-300' : 'text-zinc-100'">
+            <div
+              v-for="(val, i) in currentBubbleStep.array"
+              :key="i"
+              class="flex-1 flex flex-col items-center border py-2"
+              :class="
+                currentBubbleStep.highlight.includes(i)
+                  ? 'border-violet-500/50 bg-violet-500/10'
+                  : 'border-zinc-700 bg-zinc-800'
+              "
+            >
+              <span
+                class="font-mono text-xs"
+                :class="currentBubbleStep.highlight.includes(i) ? 'text-violet-300' : 'text-zinc-100'"
+              >
                 {{ val }}
               </span>
               <span class="font-mono text-xs text-zinc-600 mt-1">{{ i }}</span>
@@ -121,8 +165,7 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-2">Bubble Down — remoção da raiz</h2>
       <p class="text-zinc-500 text-sm mb-4">
-        Ao remover a raiz, o último nó vai para o topo e desce
-        até restaurar a heap property.
+        Ao remover a raiz, o último nó vai para o topo e desce até restaurar a heap property.
       </p>
 
       <div class="space-y-px border border-zinc-800">
@@ -133,7 +176,6 @@
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
@@ -168,7 +210,7 @@ const bubbleUpSteps = [
       { id: 'f', value: 25, x: 185, y: 175, highlight: '' },
       { id: 'g', value: 1, x: 255, y: 175, highlight: '' },
       { id: 'h', value: 50, x: 45, y: 255, highlight: 'new' },
-    ]
+    ],
   },
   {
     desc: '50 > pai (17) → troca. pai = ⌊(7-1)/2⌋ = 3',
@@ -183,7 +225,7 @@ const bubbleUpSteps = [
       { id: 'f', value: 25, x: 185, y: 175, highlight: '' },
       { id: 'g', value: 1, x: 255, y: 175, highlight: '' },
       { id: 'h', value: 17, x: 45, y: 255, highlight: 'new' },
-    ]
+    ],
   },
   {
     desc: '50 > pai (19) → troca. pai = ⌊(3-1)/2⌋ = 1',
@@ -198,7 +240,7 @@ const bubbleUpSteps = [
       { id: 'f', value: 25, x: 185, y: 175, highlight: '' },
       { id: 'g', value: 1, x: 255, y: 175, highlight: '' },
       { id: 'h', value: 17, x: 45, y: 255, highlight: '' },
-    ]
+    ],
   },
   {
     desc: '50 < pai (100) → heap property restaurada!',
@@ -213,7 +255,7 @@ const bubbleUpSteps = [
       { id: 'f', value: 25, x: 185, y: 175, highlight: '' },
       { id: 'g', value: 1, x: 255, y: 175, highlight: '' },
       { id: 'h', value: 17, x: 45, y: 255, highlight: '' },
-    ]
+    ],
   },
 ]
 

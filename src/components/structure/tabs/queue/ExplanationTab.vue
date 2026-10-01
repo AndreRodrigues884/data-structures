@@ -1,14 +1,12 @@
 <template>
   <div class="max-w-2xl space-y-8">
-
     <!-- O que é -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-3">O que é?</h2>
       <p class="text-zinc-400 leading-relaxed">
         Uma <span class="text-zinc-100 font-medium">Queue</span> é uma estrutura
-        <span class="text-violet-400">FIFO</span> — First In, First Out.
-        Imagina uma fila de supermercado — o primeiro a chegar é o primeiro a ser atendido.
-        Elementos entram pelo <span class="text-emerald-400">fim (tail)</span> e
+        <span class="text-violet-400">FIFO</span> — First In, First Out. Imagina uma fila de supermercado — o primeiro a
+        chegar é o primeiro a ser atendido. Elementos entram pelo <span class="text-emerald-400">fim (tail)</span> e
         saem pelo <span class="text-violet-400">início (head)</span>.
       </p>
     </section>
@@ -62,12 +60,13 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-3">Queue no BFS</h2>
       <p class="text-zinc-400 leading-relaxed mb-4">
-        O algoritmo <span class="text-violet-400">Breadth-First Search</span> usa uma Queue
-        para explorar grafos e árvores nível a nível — garante que os nós mais próximos
-        são visitados primeiro.
+        O algoritmo <span class="text-violet-400">Breadth-First Search</span> usa uma Queue para explorar grafos e
+        árvores nível a nível — garante que os nós mais próximos são visitados primeiro.
       </p>
       <div class="bg-zinc-900 border border-zinc-800 p-4">
-        <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"><span class="text-violet-400">function</span> <span class="text-emerald-400">bfs</span>(graph, start) {
+        <pre
+          class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"
+        ><span class="text-violet-400">function</span> <span class="text-emerald-400">bfs</span>(graph, start) {
   <span class="text-violet-400">const</span> queue = <span class="text-violet-400">new</span> <span class="text-emerald-400">Queue</span>()
   <span class="text-violet-400">const</span> visited = <span class="text-violet-400">new</span> Set()
 
@@ -88,46 +87,45 @@
 }</pre>
       </div>
     </section>
-
   </div>
 </template>
 
 <script setup lang="ts">
 const operations = [
-  { name: 'enqueue(x)', complexity: 'O(1)', color: 'text-emerald-400', desc: 'Adiciona elemento no fim'              },
-  { name: 'dequeue()',  complexity: 'O(1)', color: 'text-emerald-400', desc: 'Remove e devolve o elemento do início' },
-  { name: 'peek()',     complexity: 'O(1)', color: 'text-emerald-400', desc: 'Lê o início sem remover'               },
-  { name: 'isEmpty()',  complexity: 'O(1)', color: 'text-emerald-400', desc: 'Verifica se a queue está vazia'        },
+  { name: 'enqueue(x)', complexity: 'O(1)', color: 'text-emerald-400', desc: 'Adiciona elemento no fim' },
+  { name: 'dequeue()', complexity: 'O(1)', color: 'text-emerald-400', desc: 'Remove e devolve o elemento do início' },
+  { name: 'peek()', complexity: 'O(1)', color: 'text-emerald-400', desc: 'Lê o início sem remover' },
+  { name: 'isEmpty()', complexity: 'O(1)', color: 'text-emerald-400', desc: 'Verifica se a queue está vazia' },
 ]
 
 const comparison = [
-  { label: 'Ordem',        stack: 'LIFO',    queue: 'FIFO'     },
-  { label: 'Inserção em',  stack: 'topo',    queue: 'tail'     },
-  { label: 'Remoção em',   stack: 'topo',    queue: 'head'     },
-  { label: 'Operação add', stack: 'push()',  queue: 'enqueue()'},
-  { label: 'Operação rem', stack: 'pop()',   queue: 'dequeue()'},
+  { label: 'Ordem', stack: 'LIFO', queue: 'FIFO' },
+  { label: 'Inserção em', stack: 'topo', queue: 'tail' },
+  { label: 'Remoção em', stack: 'topo', queue: 'head' },
+  { label: 'Operação add', stack: 'push()', queue: 'enqueue()' },
+  { label: 'Operação rem', stack: 'pop()', queue: 'dequeue()' },
 ]
 
 const realWorld = [
   {
     title: 'Sistemas de impressão',
     desc: 'Documentos são impressos pela ordem em que chegaram.',
-    example: 'Print spooler do OS'
+    example: 'Print spooler do OS',
   },
   {
     title: 'BFS em grafos',
     desc: 'Explora nós nível a nível — caminho mais curto em grafos não pesados.',
-    example: 'GPS, redes sociais'
+    example: 'GPS, redes sociais',
   },
   {
     title: 'Event loop',
     desc: 'O JavaScript processa eventos e callbacks numa queue.',
-    example: 'Node.js, browsers'
+    example: 'Node.js, browsers',
   },
   {
     title: 'Sistemas de mensagens',
     desc: 'Mensagens são processadas pela ordem de chegada.',
-    example: 'RabbitMQ, Kafka, SQS'
+    example: 'RabbitMQ, Kafka, SQS',
   },
 ]
 </script>

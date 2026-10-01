@@ -17,15 +17,15 @@
     </template>
 
     <template #code>
-      <CodeTab />
+      <CodeTab structure="stack" />
     </template>
   </StructureTabs>
 </template>
 
 <script setup lang="ts">
-import StructureTabs  from '@/components/structure/StructureTabs.vue'
+import StructureTabs from '@/components/structure/StructureTabs.vue'
 import ExplanationTab from '@/components/structure/tabs/stack/ExplanationTab.vue'
-import DiagramTab     from '@/components/structure/tabs/stack/DiagramTab.vue'
-import AnimationTab   from '@/components/structure/tabs/stack/AnimationTab.vue'
-import CodeTab        from '@/components/structure/tabs/stack/CodeTab.vue'
+import DiagramTab from '@/components/structure/tabs/stack/DiagramTab.vue'
+import AnimationTab from '@/components/structure/tabs/stack/AnimationTab.vue'
+import CodeTab from '@/components/structure/CodeTab.vue'
 </script>

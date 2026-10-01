@@ -1,14 +1,12 @@
 <template>
   <div class="max-w-2xl space-y-8">
-
     <!-- O que é -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-3">O que é?</h2>
       <p class="text-zinc-400 leading-relaxed">
         Um <span class="text-zinc-100 font-medium">Disjoint Set</span> (também chamado
-        <span class="text-violet-400">Union-Find</span>) é uma estrutura que mantém
-        uma coleção de conjuntos <span class="text-zinc-100">disjuntos</span> — sem
-        elementos em comum. Permite duas operações fundamentais:
+        <span class="text-violet-400">Union-Find</span>) é uma estrutura que mantém uma coleção de conjuntos
+        <span class="text-zinc-100">disjuntos</span> — sem elementos em comum. Permite duas operações fundamentais:
         <span class="text-emerald-400">union</span> (juntar dois conjuntos) e
         <span class="text-violet-400">find</span> (encontrar o representante de um conjunto).
       </p>
@@ -41,7 +39,9 @@
         <span class="text-emerald-400">representante</span> do conjunto.
       </p>
       <div class="bg-zinc-900 border border-zinc-800 p-4">
-        <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"><span class="text-zinc-500">// Inicialmente cada elemento é o seu próprio pai</span>
+        <pre
+          class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"
+        ><span class="text-zinc-500">// Inicialmente cada elemento é o seu próprio pai</span>
 parent = [<span class="text-emerald-400">0</span>, <span class="text-emerald-400">1</span>, <span class="text-emerald-400">2</span>, <span class="text-emerald-400">3</span>, <span class="text-emerald-400">4</span>]
 <span class="text-zinc-500">//        ↑   ↑   ↑   ↑   ↑</span>
 <span class="text-zinc-500">//        0   1   2   3   4  (cada um é raiz)</span>
@@ -71,11 +71,7 @@ parent = [<span class="text-emerald-400">0</span>, <span class="text-emerald-400
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Quando usar</h2>
       <div class="space-y-2">
-        <div
-          v-for="item in useCases"
-          :key="item.text"
-          class="flex items-start gap-3 text-zinc-400 text-sm"
-        >
+        <div v-for="item in useCases" :key="item.text" class="flex items-start gap-3 text-zinc-400 text-sm">
           <span :class="item.type === 'pro' ? 'text-emerald-400' : 'text-red-400'" class="mt-0.5">
             {{ item.type === 'pro' ? '✓' : '✗' }}
           </span>
@@ -94,44 +90,43 @@ parent = [<span class="text-emerald-400">0</span>, <span class="text-emerald-400
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
 <script setup lang="ts">
 const operations = [
-  { name: 'find(x)',        complexity: 'O(α(n))', desc: 'Encontra o representante do conjunto de x'          },
-  { name: 'union(x, y)',    complexity: 'O(α(n))', desc: 'Une os conjuntos de x e y'                         },
-  { name: 'connected(x,y)', complexity: 'O(α(n))', desc: 'Verifica se x e y pertencem ao mesmo conjunto'     },
-  { name: 'makeSet(x)',     complexity: 'O(1)',     desc: 'Cria um novo conjunto com apenas o elemento x'     },
+  { name: 'find(x)', complexity: 'O(α(n))', desc: 'Encontra o representante do conjunto de x' },
+  { name: 'union(x, y)', complexity: 'O(α(n))', desc: 'Une os conjuntos de x e y' },
+  { name: 'connected(x,y)', complexity: 'O(α(n))', desc: 'Verifica se x e y pertencem ao mesmo conjunto' },
+  { name: 'makeSet(x)', complexity: 'O(1)', desc: 'Cria um novo conjunto com apenas o elemento x' },
 ]
 
 const optimizations = [
   {
     name: 'Union by Rank',
     desc: 'Junta sempre a árvore mais pequena à maior, mantendo a altura mínima.',
-    result: 'Evita árvores degeneradas — O(log n) sem path compression'
+    result: 'Evita árvores degeneradas — O(log n) sem path compression',
   },
   {
     name: 'Path Compression',
     desc: 'Durante o find(), aponta todos os nós diretamente para a raiz.',
-    result: 'Amortiza o custo — O(α(n)) onde α é a função de Ackermann inversa'
+    result: 'Amortiza o custo — O(α(n)) onde α é a função de Ackermann inversa',
   },
 ]
 
 const useCases = [
-  { type: 'pro', text: 'Detetar ciclos num grafo'                                    },
-  { type: 'pro', text: 'Kruskal\'s algorithm — Minimum Spanning Tree'               },
-  { type: 'pro', text: 'Verificar conectividade em redes'                            },
-  { type: 'pro', text: 'Agrupar pixels em imagens (connected components)'            },
-  { type: 'con', text: 'Precisas de listar elementos de um conjunto'                 },
-  { type: 'con', text: 'Precisas de remover elementos de conjuntos'                  },
+  { type: 'pro', text: 'Detetar ciclos num grafo' },
+  { type: 'pro', text: "Kruskal's algorithm — Minimum Spanning Tree" },
+  { type: 'pro', text: 'Verificar conectividade em redes' },
+  { type: 'pro', text: 'Agrupar pixels em imagens (connected components)' },
+  { type: 'con', text: 'Precisas de listar elementos de um conjunto' },
+  { type: 'con', text: 'Precisas de remover elementos de conjuntos' },
 ]
 
 const realWorld = [
-  { title: 'Kruskal MST',       desc: 'Constrói a árvore de expansão mínima verificando ciclos com Union-Find.' },
-  { title: 'Redes sociais',     desc: 'Grupos de amigos conectados — find determina se dois utilizadores estão ligados.' },
+  { title: 'Kruskal MST', desc: 'Constrói a árvore de expansão mínima verificando ciclos com Union-Find.' },
+  { title: 'Redes sociais', desc: 'Grupos de amigos conectados — find determina se dois utilizadores estão ligados.' },
   { title: 'Processamento de imagem', desc: 'Deteção de regiões conectadas (connected components) em imagens.' },
-  { title: 'LeetCode',          desc: 'Number of Provinces, Redundant Connection, Accounts Merge.' },
+  { title: 'LeetCode', desc: 'Number of Provinces, Redundant Connection, Accounts Merge.' },
 ]
 </script>

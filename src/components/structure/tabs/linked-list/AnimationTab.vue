@@ -1,6 +1,5 @@
 <template>
   <div class="max-w-3xl space-y-8">
-
     <!-- Linked List visual -->
     <div class="bg-zinc-900 border border-zinc-800 p-6 overflow-x-auto">
       <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-6">Linked List atual</p>
@@ -35,9 +34,7 @@
         </template>
 
         <!-- Empty state -->
-        <div v-if="list.length === 0" class="text-zinc-600 font-mono text-sm">
-          lista vazia
-        </div>
+        <div v-if="list.length === 0" class="text-zinc-600 font-mono text-sm">lista vazia</div>
 
         <!-- Tail label -->
         <div v-if="list.length > 0" class="flex flex-col items-center ml-4">
@@ -52,16 +49,24 @@
 
     <!-- Controls -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
       <!-- Prepend -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Prepend — O(1)</p>
         <div class="flex gap-2">
-          <input v-model="prependValue" type="number" placeholder="valor"
+          <input
+            v-model="prependValue"
+            type="number"
+            placeholder="valor"
             class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
-            @keyup.enter="prepend" />
-          <button @click="prepend" :disabled="isAnimating"
-            class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
+            @keyup.enter="prepend"
+          />
+          <button
+            @click="prepend"
+            :disabled="isAnimating"
+            class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+          >
+            →
+          </button>
         </div>
       </div>
 
@@ -69,11 +74,20 @@
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Append — O(n)</p>
         <div class="flex gap-2">
-          <input v-model="appendValue" type="number" placeholder="valor"
+          <input
+            v-model="appendValue"
+            type="number"
+            placeholder="valor"
             class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
-            @keyup.enter="append" />
-          <button @click="append" :disabled="isAnimating"
-            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
+            @keyup.enter="append"
+          />
+          <button
+            @click="append"
+            :disabled="isAnimating"
+            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+          >
+            →
+          </button>
         </div>
       </div>
 
@@ -81,12 +95,25 @@
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Insert At — O(n)</p>
         <div class="flex gap-2">
-          <input v-model="insertValue" type="number" placeholder="valor"
-            class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400" />
-          <input v-model="insertIndex" type="number" placeholder="idx"
-            class="w-16 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400" />
-          <button @click="insertAt" :disabled="isAnimating"
-            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
+          <input
+            v-model="insertValue"
+            type="number"
+            placeholder="valor"
+            class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+          />
+          <input
+            v-model="insertIndex"
+            type="number"
+            placeholder="idx"
+            class="w-16 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
+          />
+          <button
+            @click="insertAt"
+            :disabled="isAnimating"
+            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+          >
+            →
+          </button>
         </div>
       </div>
 
@@ -94,31 +121,44 @@
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Search — O(n)</p>
         <div class="flex gap-2">
-          <input v-model="searchValue" type="number" placeholder="valor"
+          <input
+            v-model="searchValue"
+            type="number"
+            placeholder="valor"
             class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
-            @keyup.enter="search" />
-          <button @click="search" :disabled="isAnimating"
-            class="px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
+            @keyup.enter="search"
+          />
+          <button
+            @click="search"
+            :disabled="isAnimating"
+            class="px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+          >
+            →
+          </button>
         </div>
       </div>
 
       <!-- Remove head -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Remove Head — O(1)</p>
-        <button @click="removeHead" :disabled="isAnimating || list.length === 0"
-          class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
+        <button
+          @click="removeHead"
+          :disabled="isAnimating || list.length === 0"
+          class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+        >
           Remover head
         </button>
       </div>
-
     </div>
 
     <!-- Reset -->
-    <button @click="reset" :disabled="isAnimating"
-      class="font-mono text-sm text-zinc-500 hover:text-zinc-300 border border-zinc-800 hover:border-zinc-600 px-4 py-2 transition-colors disabled:opacity-40">
+    <button
+      @click="reset"
+      :disabled="isAnimating"
+      class="font-mono text-sm text-zinc-500 hover:text-zinc-300 border border-zinc-800 hover:border-zinc-600 px-4 py-2 transition-colors disabled:opacity-40"
+    >
       ↺ Reset
     </button>
-
   </div>
 </template>
 
@@ -154,7 +194,7 @@ function getNodeClass(i: number) {
 }
 
 function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 function clearHighlights() {
@@ -291,7 +331,10 @@ async function removeHead() {
   clearHighlights()
 
   const head = list.value[0]
-  if (!head) { isAnimating.value = false; return }
+  if (!head) {
+    isAnimating.value = false
+    return
+  }
 
   removed.value = 0
   message.value = `a remover head: ${head.value}`

@@ -1,17 +1,14 @@
 <template>
   <div class="max-w-2xl space-y-8">
-
     <!-- O que é -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-3">O que é?</h2>
       <p class="text-zinc-400 leading-relaxed">
         Um <span class="text-zinc-100 font-medium">Bloom Filter</span> é uma estrutura
-        <span class="text-violet-400">probabilística</span> que responde à pergunta
-        "este elemento está no conjunto?" de forma extremamente eficiente.
-        Usa um <span class="text-emerald-400">array de bits</span> e
-        <span class="text-emerald-400">múltiplas funções de hash</span> — ocupa
-        muito menos memória que um HashSet mas aceita
-        <span class="text-amber-400">falsos positivos</span>.
+        <span class="text-violet-400">probabilística</span> que responde à pergunta "este elemento está no conjunto?" de
+        forma extremamente eficiente. Usa um <span class="text-emerald-400">array de bits</span> e
+        <span class="text-emerald-400">múltiplas funções de hash</span> — ocupa muito menos memória que um HashSet mas
+        aceita <span class="text-amber-400">falsos positivos</span>.
       </p>
     </section>
 
@@ -54,10 +51,9 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-3">Falsos Positivos</h2>
       <p class="text-zinc-400 leading-relaxed mb-4">
-        Um <span class="text-amber-400">falso positivo</span> acontece quando o Bloom Filter
-        diz "pode estar" mas o elemento não está de facto no conjunto.
-        Acontece porque bits podem ser ativados por outros elementos.
-        A taxa de falsos positivos depende de:
+        Um <span class="text-amber-400">falso positivo</span> acontece quando o Bloom Filter diz "pode estar" mas o
+        elemento não está de facto no conjunto. Acontece porque bits podem ser ativados por outros elementos. A taxa de
+        falsos positivos depende de:
       </p>
       <div class="space-y-px border border-zinc-800">
         <div v-for="factor in fpFactors" :key="factor.name" class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800">
@@ -84,11 +80,7 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Quando usar</h2>
       <div class="space-y-2">
-        <div
-          v-for="item in useCases"
-          :key="item.text"
-          class="flex items-start gap-3 text-zinc-400 text-sm"
-        >
+        <div v-for="item in useCases" :key="item.text" class="flex items-start gap-3 text-zinc-400 text-sm">
           <span :class="item.type === 'pro' ? 'text-emerald-400' : 'text-red-400'" class="mt-0.5">
             {{ item.type === 'pro' ? '✓' : '✗' }}
           </span>
@@ -107,74 +99,88 @@
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
 <script setup lang="ts">
 const answers = [
   {
-    result:  'Definitivamente NÃO está',
-    color:   'text-emerald-400',
+    result: 'Definitivamente NÃO está',
+    color: 'text-emerald-400',
     meaning: 'Se todos os bits estiverem a 0, o elemento nunca foi inserido.',
-    note:    '100% garantido — sem falsos negativos'
+    note: '100% garantido — sem falsos negativos',
   },
   {
-    result:  'Provavelmente SIM está',
-    color:   'text-amber-400',
+    result: 'Provavelmente SIM está',
+    color: 'text-amber-400',
     meaning: 'Se todos os bits estiverem a 1, o elemento pode estar no conjunto.',
-    note:    'Pode ser falso positivo — não é 100% garantido'
+    note: 'Pode ser falso positivo — não é 100% garantido',
   },
 ]
 
 const howItWorks = [
   {
     title: 'Inicialização',
-    desc:  'Cria um array de m bits, todos a 0.',
-    code:  'bits = [0, 0, 0, 0, 0, 0, 0, 0]  // m = 8'
+    desc: 'Cria um array de m bits, todos a 0.',
+    code: 'bits = [0, 0, 0, 0, 0, 0, 0, 0]  // m = 8',
   },
   {
     title: 'Inserção',
-    desc:  'Aplica k funções de hash ao elemento e ativa os bits correspondentes.',
-    code:  'add("hello") → hash1=2, hash2=5, hash3=7 → bits[2,5,7] = 1'
+    desc: 'Aplica k funções de hash ao elemento e ativa os bits correspondentes.',
+    code: 'add("hello") → hash1=2, hash2=5, hash3=7 → bits[2,5,7] = 1',
   },
   {
     title: 'Pesquisa',
-    desc:  'Aplica as mesmas k funções de hash e verifica se todos os bits estão a 1.',
-    code:  'has("hello") → bits[2]&&bits[5]&&bits[7] === 1 → "provavelmente sim"'
+    desc: 'Aplica as mesmas k funções de hash e verifica se todos os bits estão a 1.',
+    code: 'has("hello") → bits[2]&&bits[5]&&bits[7] === 1 → "provavelmente sim"',
   },
   {
     title: 'Não suporta remoção',
-    desc:  'Não é possível remover elementos — desativar um bit poderia afetar outros elementos.',
-    code:  '// Solução: Counting Bloom Filter (usa contadores em vez de bits)'
+    desc: 'Não é possível remover elementos — desativar um bit poderia afetar outros elementos.',
+    code: '// Solução: Counting Bloom Filter (usa contadores em vez de bits)',
   },
 ]
 
 const fpFactors = [
-  { name: 'm (tamanho)',       effect: 'Array de bits maior',          direction: '↑ m → ↓ falsos positivos', color: 'text-emerald-400' },
-  { name: 'k (nº de hashes)', effect: 'Mais funções de hash',         direction: 'k ótimo → ↓ falsos positivos', color: 'text-emerald-400' },
-  { name: 'n (nº elementos)', effect: 'Mais elementos inseridos',     direction: '↑ n → ↑ falsos positivos', color: 'text-red-400'     },
+  {
+    name: 'm (tamanho)',
+    effect: 'Array de bits maior',
+    direction: '↑ m → ↓ falsos positivos',
+    color: 'text-emerald-400',
+  },
+  {
+    name: 'k (nº de hashes)',
+    effect: 'Mais funções de hash',
+    direction: 'k ótimo → ↓ falsos positivos',
+    color: 'text-emerald-400',
+  },
+  {
+    name: 'n (nº elementos)',
+    effect: 'Mais elementos inseridos',
+    direction: '↑ n → ↑ falsos positivos',
+    color: 'text-red-400',
+  },
 ]
 
 const operations = [
-  { name: 'add(x)',   complexity: 'O(k)', note: 'k = número de funções de hash' },
-  { name: 'has(x)',   complexity: 'O(k)', note: 'k = número de funções de hash' },
-  { name: 'Espaço',   complexity: 'O(m)', note: 'm = tamanho do array de bits'  },
+  { name: 'add(x)', complexity: 'O(k)', note: 'k = número de funções de hash' },
+  { name: 'has(x)', complexity: 'O(k)', note: 'k = número de funções de hash' },
+  { name: 'Espaço', complexity: 'O(m)', note: 'm = tamanho do array de bits' },
 ]
 
 const useCases = [
   { type: 'pro', text: 'Verificar se um elemento definitivamente NÃO está num conjunto enorme' },
-  { type: 'pro', text: 'Memória extremamente limitada — usa apenas bits'                        },
-  { type: 'pro', text: 'Evitar lookups caros a bases de dados desnecessários'                   },
-  { type: 'con', text: 'Precisas de certeza absoluta — falsos positivos são inaceitáveis'       },
-  { type: 'con', text: 'Precisas de remover elementos — usa Counting Bloom Filter'              },
-  { type: 'con', text: 'Precisas de saber quais elementos estão no conjunto'                    },
+  { type: 'pro', text: 'Memória extremamente limitada — usa apenas bits' },
+  { type: 'pro', text: 'Evitar lookups caros a bases de dados desnecessários' },
+  { type: 'con', text: 'Precisas de certeza absoluta — falsos positivos são inaceitáveis' },
+  { type: 'con', text: 'Precisas de remover elementos — usa Counting Bloom Filter' },
+  { type: 'con', text: 'Precisas de saber quais elementos estão no conjunto' },
 ]
 
 const realWorld = [
-  { title: 'Google Chrome',    desc: 'Verifica se um URL é malicioso antes de fazer request à base de dados.'    },
-  { title: 'Cassandra / HBase',desc: 'Evita disk reads desnecessários — verifica se a chave existe antes de ler.' },
-  { title: 'Bitcoin',          desc: 'SPV nodes usam Bloom Filters para sincronizar transações eficientemente.'   },
-  { title: 'Medium',           desc: 'Evita mostrar artigos já lidos — verifica sem guardar o histórico completo.' },
+  { title: 'Google Chrome', desc: 'Verifica se um URL é malicioso antes de fazer request à base de dados.' },
+  { title: 'Cassandra / HBase', desc: 'Evita disk reads desnecessários — verifica se a chave existe antes de ler.' },
+  { title: 'Bitcoin', desc: 'SPV nodes usam Bloom Filters para sincronizar transações eficientemente.' },
+  { title: 'Medium', desc: 'Evita mostrar artigos já lidos — verifica sem guardar o histórico completo.' },
 ]
 </script>

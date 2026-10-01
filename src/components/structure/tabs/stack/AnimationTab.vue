@@ -1,12 +1,10 @@
 <template>
   <div class="max-w-3xl space-y-8">
-
     <!-- Stack visual -->
     <div class="bg-zinc-900 border border-zinc-800 p-6">
       <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-4">Stack atual</p>
 
       <div class="flex gap-8 items-end">
-
         <!-- Stack -->
         <div class="flex flex-col items-center gap-0 min-h-64 justify-end">
           <!-- Top label -->
@@ -18,7 +16,8 @@
             <template v-for="(item, i) in stack" :key="item.id">
               <div
                 class="w-40 h-12 flex items-center justify-between px-4 border font-mono text-sm transition-all duration-300"
-                :class="getItemClass(i)">
+                :class="getItemClass(i)"
+              >
                 <span>{{ item.value }}</span>
                 <span class="text-xs text-zinc-600">{{ i === stack.length - 1 ? 'top' : '' }}</span>
               </div>
@@ -30,8 +29,10 @@
           <span class="font-mono text-xs text-zinc-600 mt-1">base</span>
 
           <!-- Empty -->
-          <div v-if="stack.length === 0"
-            class="w-40 h-12 flex items-center justify-center font-mono text-xs text-zinc-600 border border-dashed border-zinc-800">
+          <div
+            v-if="stack.length === 0"
+            class="w-40 h-12 flex items-center justify-center font-mono text-xs text-zinc-600 border border-dashed border-zinc-800"
+          >
             vazia
           </div>
         </div>
@@ -60,30 +61,40 @@
             <p class="font-mono text-xs" :class="messageColor">{{ message }}</p>
           </div>
         </div>
-
       </div>
     </div>
 
     <!-- Controls -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
       <!-- Push -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Push — O(1)</p>
         <div class="flex gap-2">
-          <input v-model="pushValue" type="number" placeholder="valor"
+          <input
+            v-model="pushValue"
+            type="number"
+            placeholder="valor"
             class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
-            @keyup.enter="push" />
-          <button @click="push" :disabled="isAnimating"
-            class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
+            @keyup.enter="push"
+          />
+          <button
+            @click="push"
+            :disabled="isAnimating"
+            class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+          >
+            →
+          </button>
         </div>
       </div>
 
       <!-- Pop -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Pop — O(1)</p>
-        <button @click="pop" :disabled="isAnimating || stack.length === 0"
-          class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
+        <button
+          @click="pop"
+          :disabled="isAnimating || stack.length === 0"
+          class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+        >
           pop()
         </button>
       </div>
@@ -91,8 +102,11 @@
       <!-- Peek -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Peek — O(1)</p>
-        <button @click="peek" :disabled="isAnimating || stack.length === 0"
-          class="w-full px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
+        <button
+          @click="peek"
+          :disabled="isAnimating || stack.length === 0"
+          class="w-full px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+        >
           peek()
         </button>
       </div>
@@ -101,22 +115,32 @@
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Validar parênteses</p>
         <div class="flex gap-2">
-          <input v-model="parenInput" type="text" placeholder="ex: ( [ { } ] )"
+          <input
+            v-model="parenInput"
+            type="text"
+            placeholder="ex: ( [ { } ] )"
             class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
-            @keyup.enter="validateParens" />
-          <button @click="validateParens" :disabled="isAnimating"
-            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
+            @keyup.enter="validateParens"
+          />
+          <button
+            @click="validateParens"
+            :disabled="isAnimating"
+            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+          >
+            →
+          </button>
         </div>
       </div>
-
     </div>
 
     <!-- Reset -->
-    <button @click="reset" :disabled="isAnimating"
-      class="font-mono text-sm text-zinc-500 hover:text-zinc-300 border border-zinc-800 hover:border-zinc-600 px-4 py-2 transition-colors disabled:opacity-40">
+    <button
+      @click="reset"
+      :disabled="isAnimating"
+      class="font-mono text-sm text-zinc-500 hover:text-zinc-300 border border-zinc-800 hover:border-zinc-600 px-4 py-2 transition-colors disabled:opacity-40"
+    >
       ↺ Reset
     </button>
-
   </div>
 </template>
 
@@ -149,7 +173,7 @@ function getItemClass(i: number) {
 }
 
 function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 function clearHighlights() {
@@ -181,7 +205,10 @@ async function pop() {
   clearHighlights()
 
   const top = stack.value[stack.value.length - 1]
-  if (!top) { isAnimating.value = false; return }
+  if (!top) {
+    isAnimating.value = false
+    return
+  }
 
   removed.value = stack.value.length - 1
   message.value = `pop() → ${top.value} removido do topo`
@@ -204,7 +231,10 @@ async function peek() {
   clearHighlights()
 
   const top = stack.value[stack.value.length - 1]
-  if (!top) { isAnimating.value = false; return }
+  if (!top) {
+    isAnimating.value = false
+    return
+  }
 
   highlighted.value = stack.value.length - 1
   message.value = `peek() → ${top.value} (apenas lê, não remove)`

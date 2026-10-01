@@ -1,16 +1,14 @@
 <template>
   <div class="max-w-2xl space-y-8">
-
     <!-- O que é -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-3">O que é?</h2>
       <p class="text-zinc-400 leading-relaxed">
         Um <span class="text-zinc-100 font-medium">Graph</span> é um conjunto de
         <span class="text-violet-400">vértices (nós)</span> ligados por
-        <span class="text-emerald-400">arestas (edges)</span>.
-        Ao contrário de uma Tree, um Graph não tem raiz, pode ter ciclos,
-        e cada nó pode ligar-se a qualquer outro nó.
-        É a estrutura mais <span class="text-zinc-100">geral e poderosa</span>
+        <span class="text-emerald-400">arestas (edges)</span>. Ao contrário de uma Tree, um Graph não tem raiz, pode ter
+        ciclos, e cada nó pode ligar-se a qualquer outro nó. É a estrutura mais
+        <span class="text-zinc-100">geral e poderosa</span>
         para modelar relações do mundo real.
       </p>
     </section>
@@ -31,11 +29,12 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-4">Representações em memória</h2>
       <div class="space-y-4">
-
         <!-- Adjacency List -->
         <div class="bg-zinc-900 border border-zinc-800 p-4">
           <p class="font-mono text-xs text-emerald-400 uppercase tracking-widest mb-3">Adjacency List — mais comum</p>
-          <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"><span class="text-violet-400">const</span> graph = {
+          <pre
+            class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"
+          ><span class="text-violet-400">const</span> graph = {
   <span class="text-emerald-400">A</span>: [<span class="text-amber-400">'B'</span>, <span class="text-amber-400">'C'</span>],
   <span class="text-emerald-400">B</span>: [<span class="text-amber-400">'A'</span>, <span class="text-amber-400">'D'</span>],
   <span class="text-emerald-400">C</span>: [<span class="text-amber-400">'A'</span>, <span class="text-amber-400">'D'</span>],
@@ -47,7 +46,9 @@
         <!-- Adjacency Matrix -->
         <div class="bg-zinc-900 border border-zinc-800 p-4">
           <p class="font-mono text-xs text-amber-400 uppercase tracking-widest mb-3">Adjacency Matrix — lookup O(1)</p>
-          <pre class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"><span class="text-zinc-500">//   A  B  C  D</span>
+          <pre
+            class="font-mono text-sm text-zinc-300 leading-relaxed overflow-x-auto"
+          ><span class="text-zinc-500">//   A  B  C  D</span>
 <span class="text-violet-400">const</span> matrix = [
   [<span class="text-emerald-400">0</span>, <span class="text-emerald-400">1</span>, <span class="text-emerald-400">1</span>, <span class="text-emerald-400">0</span>],  <span class="text-zinc-500">// A</span>
   [<span class="text-emerald-400">1</span>, <span class="text-emerald-400">0</span>, <span class="text-emerald-400">0</span>, <span class="text-emerald-400">1</span>],  <span class="text-zinc-500">// B</span>
@@ -100,41 +101,44 @@
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
 <script setup lang="ts">
 const types = [
-  { name: 'Undirected',   desc: 'Arestas sem direção — A-B implica B-A.',           example: 'Amizades no Facebook'      },
-  { name: 'Directed (Digraph)', desc: 'Arestas com direção — A→B não implica B→A.', example: 'Seguidores no Twitter'     },
-  { name: 'Weighted',     desc: 'Arestas com peso — distância, custo, tempo.',       example: 'Google Maps, rotas'        },
-  { name: 'Cyclic',       desc: 'Tem pelo menos um ciclo — podes voltar ao início.', example: 'Redes de estradas'         },
-  { name: 'Acyclic (DAG)',desc: 'Sem ciclos — Directed Acyclic Graph.',              example: 'Dependências npm, Git'     },
-  { name: 'Connected',    desc: 'Existe caminho entre qualquer par de vértices.',    example: 'Internet, redes sociais'   },
+  { name: 'Undirected', desc: 'Arestas sem direção — A-B implica B-A.', example: 'Amizades no Facebook' },
+  { name: 'Directed (Digraph)', desc: 'Arestas com direção — A→B não implica B→A.', example: 'Seguidores no Twitter' },
+  { name: 'Weighted', desc: 'Arestas com peso — distância, custo, tempo.', example: 'Google Maps, rotas' },
+  { name: 'Cyclic', desc: 'Tem pelo menos um ciclo — podes voltar ao início.', example: 'Redes de estradas' },
+  { name: 'Acyclic (DAG)', desc: 'Sem ciclos — Directed Acyclic Graph.', example: 'Dependências npm, Git' },
+  { name: 'Connected', desc: 'Existe caminho entre qualquer par de vértices.', example: 'Internet, redes sociais' },
 ]
 
 const complexity = [
-  { op: 'Add vertex',   list: 'O(1)',     listColor: 'text-emerald-400', matrix: 'O(V²)',    matrixColor: 'text-amber-400'   },
-  { op: 'Add edge',     list: 'O(1)',     listColor: 'text-emerald-400', matrix: 'O(1)',     matrixColor: 'text-emerald-400' },
-  { op: 'Remove edge',  list: 'O(E)',     listColor: 'text-amber-400',   matrix: 'O(1)',     matrixColor: 'text-emerald-400' },
-  { op: 'Has edge?',    list: 'O(V)',     listColor: 'text-amber-400',   matrix: 'O(1)',     matrixColor: 'text-emerald-400' },
-  { op: 'BFS / DFS',    list: 'O(V + E)', listColor: 'text-emerald-400', matrix: 'O(V²)',   matrixColor: 'text-amber-400'   },
-  { op: 'Espaço',       list: 'O(V + E)', listColor: 'text-emerald-400', matrix: 'O(V²)',   matrixColor: 'text-amber-400'   },
+  { op: 'Add vertex', list: 'O(1)', listColor: 'text-emerald-400', matrix: 'O(V²)', matrixColor: 'text-amber-400' },
+  { op: 'Add edge', list: 'O(1)', listColor: 'text-emerald-400', matrix: 'O(1)', matrixColor: 'text-emerald-400' },
+  { op: 'Remove edge', list: 'O(E)', listColor: 'text-amber-400', matrix: 'O(1)', matrixColor: 'text-emerald-400' },
+  { op: 'Has edge?', list: 'O(V)', listColor: 'text-amber-400', matrix: 'O(1)', matrixColor: 'text-emerald-400' },
+  { op: 'BFS / DFS', list: 'O(V + E)', listColor: 'text-emerald-400', matrix: 'O(V²)', matrixColor: 'text-amber-400' },
+  { op: 'Espaço', list: 'O(V + E)', listColor: 'text-emerald-400', matrix: 'O(V²)', matrixColor: 'text-amber-400' },
 ]
 
 const algorithms = [
-  { name: 'BFS',       complexity: 'O(V + E)', desc: 'Explora nível a nível — caminho mais curto em grafos não pesados.'  },
-  { name: 'DFS',       complexity: 'O(V + E)', desc: 'Explora o mais fundo possível — deteção de ciclos, topological sort.' },
-  { name: 'Dijkstra',  complexity: 'O(E log V)', desc: 'Caminho mais curto em grafos pesados com pesos positivos.'        },
-  { name: 'Topological Sort', complexity: 'O(V + E)', desc: 'Ordena vértices de um DAG — dependências, scheduling.'      },
-  { name: "Kruskal / Prim", complexity: 'O(E log E)', desc: 'Minimum Spanning Tree — rede mínima que liga todos os nós.'  },
+  { name: 'BFS', complexity: 'O(V + E)', desc: 'Explora nível a nível — caminho mais curto em grafos não pesados.' },
+  { name: 'DFS', complexity: 'O(V + E)', desc: 'Explora o mais fundo possível — deteção de ciclos, topological sort.' },
+  { name: 'Dijkstra', complexity: 'O(E log V)', desc: 'Caminho mais curto em grafos pesados com pesos positivos.' },
+  { name: 'Topological Sort', complexity: 'O(V + E)', desc: 'Ordena vértices de um DAG — dependências, scheduling.' },
+  {
+    name: 'Kruskal / Prim',
+    complexity: 'O(E log E)',
+    desc: 'Minimum Spanning Tree — rede mínima que liga todos os nós.',
+  },
 ]
 
 const realWorld = [
-  { title: 'GPS & Mapas',       desc: 'Dijkstra encontra o caminho mais curto entre dois pontos.'              },
-  { title: 'Redes sociais',     desc: 'Sugestões de amigos — BFS encontra conexões a N graus de distância.'   },
-  { title: 'Dependências npm',  desc: 'DAG de pacotes — topological sort garante ordem de instalação correta.' },
-  { title: 'Web crawling',      desc: 'O Google usa BFS para indexar páginas a partir de links.'               },
+  { title: 'GPS & Mapas', desc: 'Dijkstra encontra o caminho mais curto entre dois pontos.' },
+  { title: 'Redes sociais', desc: 'Sugestões de amigos — BFS encontra conexões a N graus de distância.' },
+  { title: 'Dependências npm', desc: 'DAG de pacotes — topological sort garante ordem de instalação correta.' },
+  { title: 'Web crawling', desc: 'O Google usa BFS para indexar páginas a partir de links.' },
 ]
 </script>

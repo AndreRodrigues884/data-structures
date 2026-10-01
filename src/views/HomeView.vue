@@ -1,20 +1,16 @@
 <template>
   <div class="flex flex-col justify-center min-h-screen px-6 py-20 sm:px-10 sm:py-24 lg:px-16">
-
-    <p class="font-mono text-xs text-violet-400 uppercase tracking-widest mb-6">
-      — Ciência da Computação
-    </p>
+    <p class="font-mono text-xs text-violet-400 uppercase tracking-widest mb-6">— Ciência da Computação</p>
 
     <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter leading-none mb-6">
-      Algoritmos<br>
-      <span class="text-violet-400">&</span><br>
-      Estruturas<br>
+      Algoritmos<br />
+      <span class="text-violet-400">&</span><br />
+      Estruturas<br />
       <span class="text-emerald-400">de Dados</span>
     </h1>
 
     <p class="text-zinc-500 text-base sm:text-lg max-w-md mb-10">
-      Visualiza, compreende e domina os 14 conceitos fundamentais —
-      com explicações, gráficos, animações e código real.
+      Visualiza, compreende e domina os 14 conceitos fundamentais — com explicações, gráficos, animações e código real.
     </p>
 
     <div class="flex flex-wrap gap-4">
@@ -25,7 +21,8 @@
         → Começar
       </RouterLink>
 
-        <a href="#estruturas"
+      <a
+        href="#estruturas"
         class="border border-zinc-700 hover:border-violet-400 text-zinc-300 font-mono text-sm px-6 py-3 transition-colors"
       >
         Ver estruturas
@@ -47,6 +44,5 @@
         <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mt-1">Big-O</p>
       </div>
     </div>
-
   </div>
 </template>

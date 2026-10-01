@@ -1,6 +1,5 @@
 <template>
   <div class="max-w-3xl space-y-8">
-
     <!-- Bloom Filter visual -->
     <div class="bg-zinc-900 border border-zinc-800 p-6">
       <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-4">
@@ -27,7 +26,7 @@
           :key="i"
           class="font-mono text-xs px-2 py-1 border border-violet-500/40 text-violet-400"
         >
-          h{{ i+1 }} → {{ h }}
+          h{{ i + 1 }} → {{ h }}
         </div>
       </div>
 
@@ -48,7 +47,6 @@
 
     <!-- Controls -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
       <!-- Add -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">add(word) — O(k)</p>
@@ -64,14 +62,16 @@
             @click="addWord"
             :disabled="isAnimating"
             class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors"
-          >→</button>
+          >
+            →
+          </button>
         </div>
         <!-- Quick add -->
         <div class="flex gap-2 flex-wrap">
           <button
             v-for="word in quickWords"
             :key="word"
-            @click="addInput = word; addWord()"
+            @click="quickAdd(word)"
             :disabled="isAnimating"
             class="font-mono text-xs px-2 py-1 border border-zinc-700 text-zinc-500 hover:border-zinc-500 disabled:opacity-40 transition-colors"
           >
@@ -95,14 +95,16 @@
             @click="hasWord"
             :disabled="isAnimating"
             class="px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
-          >→</button>
+          >
+            →
+          </button>
         </div>
         <!-- Quick check -->
         <div class="flex gap-2 flex-wrap">
           <button
             v-for="word in quickWords.concat(['test', 'foo', 'bar'])"
             :key="word"
-            @click="hasInput = word; hasWord()"
+            @click="quickCheck(word)"
             :disabled="isAnimating"
             class="font-mono text-xs px-2 py-1 border border-zinc-700 text-zinc-500 hover:border-zinc-500 disabled:opacity-40 transition-colors"
           >
@@ -110,15 +112,27 @@
           </button>
         </div>
       </div>
-
     </div>
 
     <!-- Result -->
-    <div v-if="lastResult" class="bg-zinc-900 border p-4 transition-colors"
-      :class="lastResult.type === 'no' ? 'border-zinc-700' : lastResult.type === 'fp' ? 'border-amber-500/40' : 'border-emerald-500/40'"
+    <div
+      v-if="lastResult"
+      class="bg-zinc-900 border p-4 transition-colors"
+      :class="
+        lastResult.type === 'no'
+          ? 'border-zinc-700'
+          : lastResult.type === 'fp'
+            ? 'border-amber-500/40'
+            : 'border-emerald-500/40'
+      "
     >
       <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-2">resultado</p>
-      <p class="font-mono text-sm" :class="lastResult.type === 'no' ? 'text-zinc-400' : lastResult.type === 'fp' ? 'text-amber-400' : 'text-emerald-400'">
+      <p
+        class="font-mono text-sm"
+        :class="
+          lastResult.type === 'no' ? 'text-zinc-400' : lastResult.type === 'fp' ? 'text-amber-400' : 'text-emerald-400'
+        "
+      >
         {{ lastResult.message }}
       </p>
       <p class="text-xs text-zinc-600 mt-1">{{ lastResult.note }}</p>
@@ -132,7 +146,6 @@
     >
       ↺ Reset
     </button>
-
   </div>
 </template>
 
@@ -142,17 +155,17 @@ import { ref } from 'vue'
 const SIZE = 16
 const NUM_HASHES = 3
 
-const bits          = ref<number[]>(Array(SIZE).fill(0))
+const bits = ref<number[]>(Array(SIZE).fill(0))
 const insertedWords = ref<string[]>([])
-const addInput      = ref('')
-const hasInput      = ref('')
-const isAnimating   = ref(false)
-const message       = ref('Adiciona palavras e verifica se existem no filtro')
-const messageColor  = ref('text-zinc-600')
-const activeHashes  = ref<number[]>([])
-const highlighted   = ref<number[]>([])
-const checking      = ref<number[]>([])
-const lastResult    = ref<{ type: string; message: string; note: string } | null>(null)
+const addInput = ref('')
+const hasInput = ref('')
+const isAnimating = ref(false)
+const message = ref('Adiciona palavras e verifica se existem no filtro')
+const messageColor = ref('text-zinc-600')
+const activeHashes = ref<number[]>([])
+const highlighted = ref<number[]>([])
+const checking = ref<number[]>([])
+const lastResult = ref<{ type: string; message: string; note: string } | null>(null)
 
 const quickWords = ['hello', 'world', 'bloom', 'filter']
 
@@ -180,13 +193,13 @@ function getHashes(word: string): number[] {
 
 function getbitClass(i: number) {
   if (highlighted.value.includes(i)) return 'border-violet-500/60 bg-violet-500/20 text-violet-300'
-  if (checking.value.includes(i))    return 'border-amber-500/50 bg-amber-500/10 text-amber-300'
-  if (bits.value[i] === 1)           return 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
+  if (checking.value.includes(i)) return 'border-amber-500/50 bg-amber-500/10 text-amber-300'
+  if (bits.value[i] === 1) return 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
   return 'border-zinc-700 bg-zinc-900 text-zinc-700'
 }
 
 function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 async function addWord() {
@@ -259,7 +272,7 @@ async function hasWord() {
     lastResult.value = {
       type: 'no',
       message: `"${word}" definitivamente NÃO está no filtro`,
-      note: '100% garantido — sem falsos negativos'
+      note: '100% garantido — sem falsos negativos',
     }
   } else {
     const isActuallyIn = insertedWords.value.includes(word)
@@ -267,7 +280,7 @@ async function hasWord() {
       lastResult.value = {
         type: 'yes',
         message: `"${word}" provavelmente está no filtro`,
-        note: 'E de facto está — verdadeiro positivo'
+        note: 'E de facto está — verdadeiro positivo',
       }
       message.value = `✓ "${word}" provavelmente está`
       messageColor.value = 'text-emerald-400'
@@ -275,7 +288,7 @@ async function hasWord() {
       lastResult.value = {
         type: 'fp',
         message: `"${word}" provavelmente está no filtro`,
-        note: '⚠ Mas não está — falso positivo!'
+        note: '⚠ Mas não está — falso positivo!',
       }
       message.value = `⚠ falso positivo para "${word}"!`
       messageColor.value = 'text-amber-400'
@@ -296,5 +309,15 @@ function reset() {
   lastResult.value = null
   message.value = 'Adiciona palavras e verifica se existem no filtro'
   messageColor.value = 'text-zinc-600'
+}
+
+function quickAdd(word: string) {
+  addInput.value = word
+  addWord()
+}
+
+function quickCheck(word: string) {
+  hasInput.value = word
+  hasWord()
 }
 </script>

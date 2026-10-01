@@ -17,15 +17,15 @@
     </template>
 
     <template #code>
-      <CodeTab />
+      <CodeTab structure="queue" />
     </template>
   </StructureTabs>
 </template>
 
 <script setup lang="ts">
-import StructureTabs  from '@/components/structure/StructureTabs.vue'
+import StructureTabs from '@/components/structure/StructureTabs.vue'
 import ExplanationTab from '@/components/structure/tabs/queue/ExplanationTab.vue'
-import DiagramTab     from '@/components/structure/tabs/queue/DiagramTab.vue'
-import AnimationTab   from '@/components/structure/tabs/queue/AnimationTab.vue'
-import CodeTab        from '@/components/structure/tabs/queue/CodeTab.vue'
+import DiagramTab from '@/components/structure/tabs/queue/DiagramTab.vue'
+import AnimationTab from '@/components/structure/tabs/queue/AnimationTab.vue'
+import CodeTab from '@/components/structure/CodeTab.vue'
 </script>

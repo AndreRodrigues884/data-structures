@@ -1,6 +1,5 @@
 <template>
   <div class="min-h-screen px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
-
     <!-- Header -->
     <div class="mb-8 lg:mb-10">
       <p class="font-mono text-xs text-violet-400 uppercase tracking-widest mb-3">
@@ -17,9 +16,11 @@
         :key="tab.id"
         @click="activeTab = tab.id"
         class="font-mono text-xs sm:text-sm px-3 sm:px-5 py-3 transition-colors border-b-2 -mb-px whitespace-nowrap shrink-0"
-        :class="activeTab === tab.id
-          ? 'text-violet-400 border-violet-400'
-          : 'text-zinc-500 border-transparent hover:text-zinc-300'"
+        :class="
+          activeTab === tab.id
+            ? 'text-violet-400 border-violet-400'
+            : 'text-zinc-500 border-transparent hover:text-zinc-300'
+        "
       >
         {{ tab.label }}
       </button>
@@ -29,7 +30,6 @@
     <div class="overflow-x-auto">
       <slot :name="activeTab" />
     </div>
-
   </div>
 </template>
 
@@ -44,9 +44,9 @@ defineProps<{
 
 const tabs = [
   { id: 'explanation', label: '01 — Explicação' },
-  { id: 'diagram',     label: '02 — Diagrama'   },
-  { id: 'animation',   label: '03 — Animação'   },
-  { id: 'code',        label: '04 — Código'      },
+  { id: 'diagram', label: '02 — Diagrama' },
+  { id: 'animation', label: '03 — Animação' },
+  { id: 'code', label: '04 — Código' },
 ]
 
 const activeTab = ref('explanation')

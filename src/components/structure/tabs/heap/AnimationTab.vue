@@ -1,12 +1,19 @@
 <template>
   <div class="max-w-3xl space-y-8">
-
     <!-- Heap type selector -->
     <div class="flex gap-2">
-      <button v-for="type in heapTypes" :key="type.id" @click="switchHeapType(type.id)" :disabled="isAnimating"
-        class="font-mono text-sm px-4 py-2 border transition-colors disabled:opacity-40" :class="heapType === type.id
-          ? 'border-violet-400 text-violet-400 bg-violet-400/10'
-          : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'">
+      <button
+        v-for="type in heapTypes"
+        :key="type.id"
+        @click="switchHeapType(type.id)"
+        :disabled="isAnimating"
+        class="font-mono text-sm px-4 py-2 border transition-colors disabled:opacity-40"
+        :class="
+          heapType === type.id
+            ? 'border-violet-400 text-violet-400 bg-violet-400/10'
+            : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'
+        "
+      >
         {{ type.label }}
       </button>
     </div>
@@ -14,31 +21,58 @@
     <!-- Heap visual -->
     <div class="bg-zinc-900 border border-zinc-800 p-6">
       <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-4">
-        {{ heapType === 'max' ? 'Max Heap' : 'Min Heap' }} — raiz é sempre o {{ heapType === 'max' ? 'máximo' : 'mínimo'
-        }}
+        {{ heapType === 'max' ? 'Max Heap' : 'Min Heap' }} — raiz é sempre o
+        {{ heapType === 'max' ? 'máximo' : 'mínimo' }}
       </p>
 
       <!-- Tree visualization -->
       <svg :viewBox="`0 0 ${svgWidth} ${svgHeight}`" class="w-full mb-4" xmlns="http://www.w3.org/2000/svg">
         <!-- Edges -->
         <template v-for="edge in treeEdges" :key="`${edge.from}-${edge.to}`">
-          <line :x1="getPos(edge.from).x" :y1="getPos(edge.from).y" :x2="getPos(edge.to).x" :y2="getPos(edge.to).y"
-            stroke="#3f3f5a" stroke-width="1.5" />
+          <line
+            :x1="getPos(edge.from).x"
+            :y1="getPos(edge.from).y"
+            :x2="getPos(edge.to).x"
+            :y2="getPos(edge.to).y"
+            stroke="#3f3f5a"
+            stroke-width="1.5"
+          />
         </template>
 
         <!-- Nodes -->
         <g v-for="(val, i) in heap" :key="i">
-          <circle :cx="getPos(i).x" :cy="getPos(i).y" r="20" :fill="getNodeFill(i)" :stroke="getNodeStroke(i)"
-            stroke-width="1.5" class="transition-all duration-300" />
-          <text :x="getPos(i).x" :y="getPos(i).y" text-anchor="middle" dominant-baseline="middle" fill="#e8e8f0"
-            font-family="JetBrains Mono, monospace" font-size="13" font-weight="500">{{ val }}</text>
+          <circle
+            :cx="getPos(i).x"
+            :cy="getPos(i).y"
+            r="20"
+            :fill="getNodeFill(i)"
+            :stroke="getNodeStroke(i)"
+            stroke-width="1.5"
+            class="transition-all duration-300"
+          />
+          <text
+            :x="getPos(i).x"
+            :y="getPos(i).y"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            fill="#e8e8f0"
+            font-family="JetBrains Mono, monospace"
+            font-size="13"
+            font-weight="500"
+          >
+            {{ val }}
+          </text>
         </g>
       </svg>
 
       <!-- Array view -->
       <div class="flex gap-px mb-3 overflow-x-auto">
-        <div v-for="(val, i) in heap" :key="i"
-          class="flex-1 min-w-8 flex flex-col items-center border py-2 transition-all duration-300" :class="getArrayClass(i)">
+        <div
+          v-for="(val, i) in heap"
+          :key="i"
+          class="flex-1 min-w-8 flex flex-col items-center border py-2 transition-all duration-300"
+          :class="getArrayClass(i)"
+        >
           <span class="font-mono text-sm">{{ val }}</span>
           <span class="font-mono text-xs text-zinc-600 mt-1">{{ i }}</span>
         </div>
@@ -62,24 +96,35 @@
 
     <!-- Controls -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
       <!-- Push -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">push — O(log n)</p>
         <div class="flex gap-2">
-          <input v-model="pushValue" type="number" placeholder="valor"
+          <input
+            v-model="pushValue"
+            type="number"
+            placeholder="valor"
             class="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 px-3 py-2 font-mono text-sm text-zinc-100 outline-none focus:border-violet-400"
-            @keyup.enter="push" />
-          <button @click="push" :disabled="isAnimating"
-            class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors">→</button>
+            @keyup.enter="push"
+          />
+          <button
+            @click="push"
+            :disabled="isAnimating"
+            class="px-4 py-2 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+          >
+            →
+          </button>
         </div>
       </div>
 
       <!-- Pop -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">pop — O(log n)</p>
-        <button @click="pop" :disabled="isAnimating || heap.length === 0"
-          class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
+        <button
+          @click="pop"
+          :disabled="isAnimating || heap.length === 0"
+          class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+        >
           pop() → remove {{ heapType === 'max' ? 'máximo' : 'mínimo' }}
         </button>
       </div>
@@ -87,8 +132,11 @@
       <!-- Peek -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">peek — O(1)</p>
-        <button @click="peek" :disabled="isAnimating || heap.length === 0"
-          class="w-full px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
+        <button
+          @click="peek"
+          :disabled="isAnimating || heap.length === 0"
+          class="w-full px-4 py-2 bg-amber-600 hover:bg-amber-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+        >
           peek() → ver raiz
         </button>
       </div>
@@ -96,36 +144,44 @@
       <!-- Heap Sort -->
       <div class="bg-zinc-900 border border-zinc-800 p-4 space-y-3">
         <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">heap sort — O(n log n)</p>
-        <button @click="heapSort" :disabled="isAnimating || heap.length === 0"
-          class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors">
+        <button
+          @click="heapSort"
+          :disabled="isAnimating || heap.length === 0"
+          class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-mono text-sm transition-colors"
+        >
           ordenar array
         </button>
       </div>
-
     </div>
 
     <!-- Sort result -->
     <div v-if="sortResult.length > 0" class="bg-zinc-900 border border-zinc-800 p-4">
       <p class="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-3">resultado heap sort</p>
       <div class="flex gap-2 flex-wrap">
-        <span v-for="(val, i) in sortResult" :key="i"
-          class="font-mono text-sm px-2 py-1 border border-emerald-500/40 text-emerald-400">{{ val }}</span>
+        <span
+          v-for="(val, i) in sortResult"
+          :key="i"
+          class="font-mono text-sm px-2 py-1 border border-emerald-500/40 text-emerald-400"
+          >{{ val }}</span
+        >
       </div>
     </div>
 
     <!-- Reset -->
-    <button @click="reset" :disabled="isAnimating"
-      class="font-mono text-sm text-zinc-500 hover:text-zinc-300 border border-zinc-800 hover:border-zinc-600 px-4 py-2 transition-colors disabled:opacity-40">
+    <button
+      @click="reset"
+      :disabled="isAnimating"
+      class="font-mono text-sm text-zinc-500 hover:text-zinc-300 border border-zinc-800 hover:border-zinc-600 px-4 py-2 transition-colors disabled:opacity-40"
+    >
       ↺ Reset
     </button>
-
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-const heapTypes: { id: 'max' | 'min', label: string }[] = [
+const heapTypes: { id: 'max' | 'min'; label: string }[] = [
   { id: 'max', label: 'Max Heap' },
   { id: 'min', label: 'Min Heap' },
 ]
@@ -148,7 +204,7 @@ const NODE_SPACING = 46
 const LEVEL_HEIGHT = 60
 const PADDING = 25
 
-const depth = computed(() => heap.value.length > 0 ? Math.floor(Math.log2(heap.value.length)) : 0)
+const depth = computed(() => (heap.value.length > 0 ? Math.floor(Math.log2(heap.value.length)) : 0))
 const svgWidth = computed(() => Math.max(500, 2 ** depth.value * NODE_SPACING))
 const svgHeight = computed(() => depth.value * LEVEL_HEIGHT + 2 * PADDING)
 
@@ -199,7 +255,7 @@ function compare(a: number, b: number): boolean {
 }
 
 function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 function clearHighlights() {
@@ -247,7 +303,7 @@ async function bubbleDown(arr: number[], idx: number) {
     messageColor.value = 'text-amber-400'
     await sleep(600)
 
-      ;[arr[i], arr[target]] = [arr[target]!, arr[i]!]
+    ;[arr[i], arr[target]] = [arr[target]!, arr[i]!]
     heap.value = [...arr]
     i = target
     swapping.value = []
@@ -377,9 +433,7 @@ function switchHeapType(type: 'max' | 'min') {
 function reset() {
   clearHighlights()
   sortResult.value = []
-  heap.value = heapType.value === 'max'
-    ? [100, 19, 36, 17, 3, 25, 1]
-    : [1, 3, 6, 5, 9, 8, 17]
+  heap.value = heapType.value === 'max' ? [100, 19, 36, 17, 3, 25, 1] : [1, 3, 6, 5, 9, 8, 17]
   message.value = 'Experimenta as operações abaixo'
   messageColor.value = 'text-zinc-600'
 }

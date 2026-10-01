@@ -1,6 +1,5 @@
 <template>
   <div class="max-w-3xl space-y-10">
-
     <!-- Trie visual -->
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-2">Construção passo a passo</h2>
@@ -17,9 +16,11 @@
           :key="i"
           @click="activeStep = i"
           class="font-mono text-xs px-3 py-1.5 border transition-colors"
-          :class="activeStep === i
-            ? 'border-violet-400 text-violet-400 bg-violet-400/10'
-            : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'"
+          :class="
+            activeStep === i
+              ? 'border-violet-400 text-violet-400 bg-violet-400/10'
+              : 'border-zinc-700 text-zinc-500 hover:border-zinc-500'
+          "
         >
           {{ step.label }}
         </button>
@@ -31,26 +32,36 @@
           <line
             v-for="edge in currentStep.edges"
             :key="`${edge.from}-${edge.to}`"
-            :x1="getPos(edge.from).x" :y1="getPos(edge.from).y"
-            :x2="getPos(edge.to).x"   :y2="getPos(edge.to).y"
-            stroke="#3f3f5a" stroke-width="1.5"
+            :x1="getPos(edge.from).x"
+            :y1="getPos(edge.from).y"
+            :x2="getPos(edge.to).x"
+            :y2="getPos(edge.to).y"
+            stroke="#3f3f5a"
+            stroke-width="1.5"
           />
 
           <!-- Nodes -->
           <g v-for="node in currentStep.nodes" :key="node.id">
             <circle
-              :cx="getPos(node.id).x" :cy="getPos(node.id).y" r="18"
-              :fill="node.isNew ? '#1e1b4b' : (node.isEnd ? '#0d2b1e' : '#18181f')"
-              :stroke="node.isNew ? '#7c6dfa' : (node.isEnd ? '#3de0c0' : '#3f3f5a')"
+              :cx="getPos(node.id).x"
+              :cy="getPos(node.id).y"
+              r="18"
+              :fill="node.isNew ? '#1e1b4b' : node.isEnd ? '#0d2b1e' : '#18181f'"
+              :stroke="node.isNew ? '#7c6dfa' : node.isEnd ? '#3de0c0' : '#3f3f5a'"
               :stroke-width="node.isEnd ? 2.5 : 1.5"
             />
             <text
-              :x="getPos(node.id).x" :y="getPos(node.id).y"
-              text-anchor="middle" dominant-baseline="middle"
-              :fill="node.isNew ? '#a78bfa' : (node.isEnd ? '#3de0c0' : '#e8e8f0')"
+              :x="getPos(node.id).x"
+              :y="getPos(node.id).y"
+              text-anchor="middle"
+              dominant-baseline="middle"
+              :fill="node.isNew ? '#a78bfa' : node.isEnd ? '#3de0c0' : '#e8e8f0'"
               font-family="JetBrains Mono, monospace"
-              font-size="13" font-weight="500"
-            >{{ node.label }}</text>
+              font-size="13"
+              font-weight="500"
+            >
+              {{ node.label }}
+            </text>
           </g>
         </svg>
 
@@ -66,9 +77,9 @@
     <section>
       <h2 class="text-xl font-bold tracking-tight mb-2">Partilha de prefixos</h2>
       <p class="text-zinc-500 text-sm mb-4">
-        "car", "cat" e "card" partilham o mesmo caminho <span class="text-violet-400">c → a</span> —
-        só divergem a partir do 3º caractere. É isto que torna a Trie eficiente em memória
-        para conjuntos de palavras com prefixos comuns.
+        "car", "cat" e "card" partilham o mesmo caminho <span class="text-violet-400">c → a</span> — só divergem a
+        partir do 3º caractere. É isto que torna a Trie eficiente em memória para conjuntos de palavras com prefixos
+        comuns.
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-zinc-800 border border-zinc-800">
         <div class="bg-zinc-900 p-4 text-center">
@@ -85,7 +96,6 @@
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
@@ -95,15 +105,15 @@ import { ref, computed } from 'vue'
 const activeStep = ref(0)
 
 const positions: Record<string, { x: number; y: number }> = {
-  root: { x: 230, y: 25  },
-  c:    { x: 140, y: 90  },
-  d1:   { x: 320, y: 90  },
-  a:    { x: 140, y: 150 },
-  o:    { x: 320, y: 150 },
-  r:    { x: 100, y: 210 },
-  t:    { x: 190, y: 210 },
-  g:    { x: 320, y: 210 },
-  d2:   { x: 100, y: 270 },
+  root: { x: 230, y: 25 },
+  c: { x: 140, y: 90 },
+  d1: { x: 320, y: 90 },
+  a: { x: 140, y: 150 },
+  o: { x: 320, y: 150 },
+  r: { x: 100, y: 210 },
+  t: { x: 190, y: 210 },
+  g: { x: 320, y: 210 },
+  d2: { x: 100, y: 270 },
 }
 
 function getPos(id: string) {
@@ -114,8 +124,11 @@ type StepNode = { id: string; label: string; isEnd?: boolean; isNew?: boolean }
 type StepEdge = { from: string; to: string }
 
 const steps: {
-  label: string; op: string; desc: string
-  nodes: StepNode[]; edges: StepEdge[]
+  label: string
+  op: string
+  desc: string
+  nodes: StepNode[]
+  edges: StepEdge[]
 }[] = [
   {
     label: 'Vazio',
@@ -134,7 +147,11 @@ const steps: {
       { id: 'a', label: 'a', isNew: true },
       { id: 'r', label: 'r', isEnd: true, isNew: true },
     ],
-    edges: [{ from: 'root', to: 'c' }, { from: 'c', to: 'a' }, { from: 'a', to: 'r' }],
+    edges: [
+      { from: 'root', to: 'c' },
+      { from: 'c', to: 'a' },
+      { from: 'a', to: 'r' },
+    ],
   },
   {
     label: 'insert("cat")',
@@ -148,8 +165,10 @@ const steps: {
       { id: 't', label: 't', isEnd: true, isNew: true },
     ],
     edges: [
-      { from: 'root', to: 'c' }, { from: 'c', to: 'a' },
-      { from: 'a', to: 'r' }, { from: 'a', to: 't' },
+      { from: 'root', to: 'c' },
+      { from: 'c', to: 'a' },
+      { from: 'a', to: 'r' },
+      { from: 'a', to: 't' },
     ],
   },
   {
@@ -165,8 +184,10 @@ const steps: {
       { id: 'd2', label: 'd', isEnd: true, isNew: true },
     ],
     edges: [
-      { from: 'root', to: 'c' }, { from: 'c', to: 'a' },
-      { from: 'a', to: 'r' }, { from: 'a', to: 't' },
+      { from: 'root', to: 'c' },
+      { from: 'c', to: 'a' },
+      { from: 'a', to: 'r' },
+      { from: 'a', to: 't' },
       { from: 'r', to: 'd2' },
     ],
   },
@@ -186,10 +207,14 @@ const steps: {
       { id: 'g', label: 'g', isEnd: true, isNew: true },
     ],
     edges: [
-      { from: 'root', to: 'c' }, { from: 'c', to: 'a' },
-      { from: 'a', to: 'r' }, { from: 'a', to: 't' },
+      { from: 'root', to: 'c' },
+      { from: 'c', to: 'a' },
+      { from: 'a', to: 'r' },
+      { from: 'a', to: 't' },
       { from: 'r', to: 'd2' },
-      { from: 'root', to: 'd1' }, { from: 'd1', to: 'o' }, { from: 'o', to: 'g' },
+      { from: 'root', to: 'd1' },
+      { from: 'd1', to: 'o' },
+      { from: 'o', to: 'g' },
     ],
   },
 ]
